@@ -37,7 +37,7 @@
         <!-- fit video  -->
         <script type="text/javascript" src={{ asset('js/jquery.fitvids.js')}}></script>
         <!-- skill bars  -->
-        <script type="text/javascript" src={{ asset('js/skill.bars.jquery.js"')}}></script> 
+        <script type="text/javascript" src={{ asset('js/skill.bars.jquery.js')}}></script> 
         <!-- justified gallery  -->
         <script type="text/javascript" src={{ asset('js/justified-gallery.min.js')}}></script>
         <!--pie chart-->

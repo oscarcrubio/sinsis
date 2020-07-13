@@ -26,3 +26,4 @@
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
         <![endif]-->
+        <link rel="stylesheet" href="{{ asset('css/styles/main.css') }}">
