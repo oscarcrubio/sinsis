@@ -21,12 +21,13 @@
                                 {{-- <h6 class="font-weight-300 text-white-2 margin-40px-bottom sm-margin-35px-bottom">We’re getting ready to launch</h6> --}}                                
                                 <div class="bg-extra-dark-gray padding-eight-all border-radius-6 width-70 lg-width-80 sm-width-100 mx-auto sm-padding-30px-all">
                                     <h6 class="font-weight-300 text-white-2 margin-20px-bottom sm-margin-15px-bottom">Iniciar Sesion</h6>                                    
-                                    <form id="login-form" action="javascript:void(0)" method="post" class="search-box2">                                        
+                                    <form id="login-form" action="{{ route('login') }}" method="POST" class="search-box2">                                        
                                         <div class="input-group add-on width-75 mx-auto md-width-100">
                                             <input name="email" id="email" class="" placeholder="Enter your email address" type="text">
-                                            <input name="pass" id="pass" class="" placeholder="Enter your password" type="password">                                            
+                                            <input name="password" id="pass" class="" placeholder="Enter your password" type="password">                                            
                                         </div>
                                         <input type="submit" value="Ingresar" class="btn btn-primary">
+                                        @csrf
                                     </form>
                                     <p class="text-medium width-70 mx-auto margin-40px-top sm-width-100 sm-margin-15px-top"><a href=""> ¿Olvidaste tu contraseña?</a></p>
                                     <p class="text-medium width-70 mx-auto sm-width-100 sm-margin-10px-top">¿No tienes cuenta? <a href="">Ponte en contacto con nosotros</a></p>

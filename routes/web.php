@@ -13,5 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', array('as' => 'home', 'uses' => 'MainController@Index'));
-Route::get('/login', array('as' => 'login', 'uses' => 'MainController@Login'));
+Route::get('/', array('as' => 'home', 'uses' => 'MainController@index'));
+Route::get('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm'));
+Route::post('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@login'));
+
+/*
+**
+* Admin Routes
+**
+*/
+
+Route::get('/admin', array('as' => 'admin', 'uses' => 'AdminController@dashboard'));
+
