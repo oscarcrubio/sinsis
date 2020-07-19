@@ -40,7 +40,14 @@
                                 <li class="dropdown megamenu-fw">
                                     <a href="#">Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
-                                <a class="dropdown megamenu-fw login" href={{ route('login') }}>login</a>
+                                @if (Auth::check() == true)
+                                <div class="login p-2">
+                                    <i class="far fa-user login" title="{{ Auth::user()->name }}"></i>
+                                    <i class="fas fa-angle-down"></i>    
+                                </div>                                    
+                                @else
+                                    <a class="dropdown megamenu-fw login" href={{ route('login') }}>login</a>
+                                @endif                                
                             </ul>
                         </div>
                     </div>                    
