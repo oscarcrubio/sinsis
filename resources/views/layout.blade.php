@@ -6,7 +6,7 @@
         {{-- <link rel="canonical" href="https://www.example.com/{{LaravelLocalization::getCurrentLocale()}}@yield('canon')"/> --}}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" type="image/png" href="{{asset('images/icons/favicon.png')}}">
+        <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.ico')}}">
         @yield('meta')
         @include('maincss')
         @yield('css')

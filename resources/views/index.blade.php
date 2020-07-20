@@ -2,7 +2,7 @@
 @section('title', 'Inicio | SinSis')
 @section('body')
  <!-- start parallax hero section -->
- <section class="wow fadeIn p-0 parallax sm-background-image-center" data-stellar-background-ratio="0.5" style="background-image: url('https://via.placeholder.com/1100')">
+ <section class="wow fadeIn p-0 parallax sm-background-image-center" data-stellar-background-ratio="0.5" style="background-image: url({{ asset('images/home/header.jpg') }})">
     <div class="opacity-extra-medium bg-black"></div>
     <div class="container-fluid position-relative full-screen">
         <div class="slider-typography">
