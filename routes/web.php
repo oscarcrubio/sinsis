@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', array('as' => 'home', 'uses' => 'MainController@index'));
 Route::get('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm'));
 Route::post('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@login'));
+Route::get('/logout', array('as' => 'logout', 'uses' => 'Auth\LoginController@logout'));
 
 /*
 **
@@ -23,5 +24,20 @@ Route::post('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@log
 **
 */
 
-Route::get('/admin', array('as' => 'admin', 'uses' => 'AdminController@dashboard'));
+Route::group(
+    [
+        'prefix' => 'admin'
+    ],
+    function(){
+        Route::get('/', array('as' => 'admin', 'uses' => 'AdminController@dashboard'));
+        Route::group(
+            [
+                'prefix' => 'project'
+            ],
+            function(){
+                Route::get('/', array('as' => 'projects', 'uses' => 'AdminController@indexProject'));
+                Route::get('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
+            });        
+    });
+
 
