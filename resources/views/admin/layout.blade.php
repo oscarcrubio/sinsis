@@ -14,8 +14,9 @@
 </head>
     <body data-lang="{{ str_replace('_', '-', app()->getLocale()) }}">        
         @include('admin.components.sidebar')
+        <div class="sidebar-wrapper bg-light-gray md-padding-50px-top">
         @yield('body')
-        @include('components.footer')
+        </div>        
         @include('mainjs')        
         <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700,800&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
