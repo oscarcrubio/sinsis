@@ -27,4 +27,5 @@
             <script src="js/html5shiv.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="{{ asset('css/styles/main.css') }}">   
-        <link rel="stylesheet" href="{{ asset('css/musustyles/mstyles.css') }}">        
+        <link rel="stylesheet" href="{{ asset('css/musustyles/mstyles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles/marcel.css') }}">        
