@@ -39,7 +39,7 @@
                                 <li class="dropdown simple-dropdown"><a href="#">Nosotros</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
                                 <li class="dropdown megamenu-fw">
-                                    <a href="#">Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
+                                    <a href={{ route('contact') }}>Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
                                 @if (Auth::check() == true)
                                 <div class="login p-2">

@@ -1,5 +1,5 @@
 <!-- start call to action section -->
-<section class="wow fadeIn padding-60px-tb md-padding-40px-tb bg-deep-pink">
+<section class="wow fadeIn padding-60px-tb md-padding-40px-tb bg-deep-pink" id="scftr">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 position-relative text-center">

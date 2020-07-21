@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', array('as' => 'home', 'uses' => 'MainController@index'));
+Route::get('/contacto', array('as' => 'contact', 'uses' => 'MainController@contact'));
 Route::get('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm'));
 Route::post('/login', array('as' => 'login', 'uses' => 'Auth\LoginController@login'));
 Route::get('/logout', array('as' => 'logout', 'uses' => 'Auth\LoginController@logout'));
