@@ -57,7 +57,24 @@ Route::group(
             function(){
                 Route::get('/', array('as' => 'user', 'uses' => 'AdminController@indexUser'));
                 Route::get('/create', array('as' => 'create-user', 'uses' => 'AdminController@createUser'));
-            });   
+            });
+            
+        Route::group(
+            [
+                 'prefix' => 'diagnostics'
+            ],
+            function(){
+                Route::get('/', array('as' => 'diagnostics', 'uses' => 'AdminController@indexDiagnostics'));
+                Route::get('/create', array('as' => 'create-diagnostics', 'uses' => 'AdminController@createDiagnostics'));
+                });   
+        Route::group(
+            [
+                 'prefix' => 'proposals'
+            ],
+            function(){
+                Route::get('/', array('as' => 'proposals', 'uses' => 'AdminController@indexProposals'));
+                Route::get('/create', array('as' => 'create-proposals', 'uses' => 'AdminController@createProposals'));
+                });   
     });
 
 
