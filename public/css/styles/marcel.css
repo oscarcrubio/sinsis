@@ -18,3 +18,12 @@
     margin-left: 700px;
     margin-top: -450px;
 }
+.enterview{
+    background-color:#f2f2f2;
+}
+.titles{
+    color: black;
+}
+.ver:hover{
+    color: rgb(250, 167, 12);
+}

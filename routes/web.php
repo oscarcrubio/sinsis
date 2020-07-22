@@ -38,7 +38,26 @@ Route::group(
             function(){
                 Route::get('/', array('as' => 'projects', 'uses' => 'AdminController@indexProject'));
                 Route::get('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
-            });        
+            });
+
+
+        Route::group(
+            [
+                'prefix' => 'enterview'
+            ],
+            function(){
+                Route::get('/', array('as' => 'enterview', 'uses' => 'AdminController@indexEnterview'));
+                Route::get('/create', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
+            });   
+            
+        Route::group(
+            [
+                 'prefix' => 'user'
+            ],
+            function(){
+                Route::get('/', array('as' => 'user', 'uses' => 'AdminController@indexUser'));
+                Route::get('/create', array('as' => 'create-user', 'uses' => 'AdminController@createUser'));
+            });   
     });
 
 
