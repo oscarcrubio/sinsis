@@ -8,7 +8,7 @@
     <div class="container projects-container">        
         <div class="row">
             <div class="col-12 wow fadeIn">
-                <form action="" method="post">
+                <form action="" method="post" id="create-project">
                     <label for="">Nombre del Proyecto:</label>
                     <input type="text" name="" id="">
                     <label for="">Descripcion:</label>
@@ -34,7 +34,7 @@
                   
                       <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
-                         <form action="" method="post">
+                         <form action="" method="post" id="create-enterprise">
                              <label for="">Nombre de la empresa:</label>
                              <input type="text" name="" id="">
                              <label for="">Razon Social:</label>
@@ -58,13 +58,15 @@
                                   </div>                              
                                   <div id="collapseOne-2" class="collapse" aria-labelledby="headingOne-2" data-parent="#accordionExample-2">
                                     <div class="card-body">
-                                        <input type="text" name="" id="">
-                                        <label for="">Nombre responsable</label>
-                                        <input type="text" name="" id="">
-                                        <label for="">Correo Electronico</label>
-                                        <input type="text" name="" id="">
-                                        <label for="">Cargo</label>
-                                        <input type="text" name="" id="">
+                                        <form action="" method="post" id="create-manager">
+                                          <input type="text" name="" id="">
+                                          <label for="">Nombre responsable</label>
+                                          <input type="text" name="" id="">
+                                          <label for="">Correo Electronico</label>
+                                          <input type="text" name="" id="">
+                                          <label for="">Cargo</label>
+                                          <input type="text" name="" id="">
+                                        </form>
                                     </div>
                                   </div>
                                 </div>                                                                

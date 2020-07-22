@@ -64,6 +64,46 @@
                       </li>
                   </ul>
               </li>
+              <li class="dropdown">
+                <a href={{ route('enterview') }} title="Proyectos" data-toggle="dropdown">Entrevistas<i class="fas fa-angle-right pull-right"></i></a>
+                  <ul class="dropdown-menu second-level">
+                  <li class="dropdown">
+                          <a href={{ route('create-enterview') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>                         
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Services" data-toggle="dropdown">Services</a>                         
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Contact" data-toggle="dropdown">Contact</a>                          
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Team" data-toggle="dropdown">Team </a>
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Additional" data-toggle="dropdown">Additional</a>
+                      </li>
+                 </ul>
+                </li>
+                <li class="dropdown">
+                    <a href={{ route('user') }} title="Proyectos" data-toggle="dropdown">Usuarios<i class="fas fa-angle-right pull-right"></i></a>
+                  <ul class="dropdown-menu second-level">
+                  <li class="dropdown">
+                          <a href={{ route('create-user') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>                         
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Services" data-toggle="dropdown">Services</a>                         
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Contact" data-toggle="dropdown">Contact</a>                          
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Team" data-toggle="dropdown">Team </a>
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" title="Additional" data-toggle="dropdown">Additional</a>
+                      </li>
+                  </ul>
+              </li>
               {{-- <li class="dropdown">
                   <a data-toggle="dropdown" href="#" title="Features">Features <i class="fas fa-angle-right"></i></a>
                   <ul class="dropdown-menu second-level">

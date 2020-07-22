@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Project;
 use App\Enterprise;
 use App\User;
+use App\Enterview;
 
 class AdminController extends Controller
 {
@@ -39,4 +40,25 @@ class AdminController extends Controller
         $enterprises  = Enterprise::all();
         return view('admin.projects.create',compact('enterprises','managers'));
     }
+
+    public function indexEnterview(){
+        $enterview = ['Hijueputa','Bebecita bebe lin', 'La jeepeta'];
+        return view('admin/enterview/index',compact('enterview'));
+    }
+
+    public function createEnterview(){
+        
+        return view('admin/enterview/create');
+    }
+
+    public function indexUser(){
+        $user = ['Hijueputa','Bebecita bebe lin', 'La jeepeta'];
+        return view('admin/users/index',compact('user'));
+    }
+
+    public function createUser(){
+        
+        return view('admin/users/create');
+    }
+
 }

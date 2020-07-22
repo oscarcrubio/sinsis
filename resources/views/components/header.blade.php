@@ -17,7 +17,8 @@
                 <div class="container nav-header-container">
                     <!-- start logo -->
                     <div class="col-auto pl-lg-0">
-                        <a href="index.html" title="Pofo" class="logo"><img src="images/logo.png" data-rjs="images/logo@2x.png" class="logo-dark default" alt="Pofo"><img src="images/logo-white.png" data-rjs="images/logo-white@2x.png" alt="Pofo" class="logo-light"></a>
+                        <a href="index.html" title="SinSis" class="logo logo-main-index"><img src={{ asset('images/logos/logo-sinsis.png') }} data-rjs="images/logo@2x.png" class="logo-dark default" alt="SinSis"><img src="images/logo-white.png" data-rjs="images/logo-white@2x.png" alt="SinSis" class="logo-light"></a>
+                        <a href="index.html" title="SinSis" class="logo display-none logo-mini-index"><img src={{ asset('images/logos/logo-sinsis-mini.png') }} data-rjs="images/logo@2x.png" class="logo-dark default" alt="SinSis"><img src="images/logo-white.png" data-rjs="images/logo-white@2x.png" alt="SinSis" class="logo-light"></a>
                     </div>
                     <!-- end logo -->
                     <div class="col accordion-menu pr-0 pr-md-3">
@@ -38,7 +39,7 @@
                                 <li class="dropdown simple-dropdown"><a href="#">Nosotros</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
                                 <li class="dropdown megamenu-fw">
-                                    <a href="#">Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
+                                    <a href={{ route('contact') }}>Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
                                 @if (Auth::check() == true)
                                 <div class="login p-2">

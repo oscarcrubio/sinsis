@@ -32,13 +32,27 @@
 .logo-holder img
     max-height: 220px !important
 
+header a.logo img
+    max-height: 130px
+
 .accordion
     border-bottom:  1px solid rgba(0,0,0,.125) !important
 
-@media(max-width 991px)
+
+
+@media(max-width 991px) 
     .logo-holder img
         max-height: 26px !important
     .logo-holder > .big-logo
         display: none !important
     .logo-holder > .display-none
         display: inline-block !important
+    .logo-main-index
+        display: none !important
+    .logo-mini-index
+        display inline-block !important
+    .logo img
+        max-height: 40px !important
+@media(max-width 767px)
+    .accordion-menu
+        padding-right: 20px !important
