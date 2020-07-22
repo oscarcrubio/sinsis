@@ -42,7 +42,7 @@ class AdminController extends Controller
     }
 
     public function indexEnterview(){
-        $enterview = ['Hijueputa','Bebecita bebe lin', 'La jeepeta'];
+        $enterview = ['Entrevista 1','Entrevista 2', 'Entrevista 3'];
         return view('admin/enterview/index',compact('enterview'));
     }
 
@@ -52,13 +52,32 @@ class AdminController extends Controller
     }
 
     public function indexUser(){
-        $user = ['Hijueputa','Bebecita bebe lin', 'La jeepeta'];
+        $user = ['Musitobb','Mayeel', 'Jepeeta'];
         return view('admin/users/index',compact('user'));
     }
 
     public function createUser(){
         
         return view('admin/users/create');
+    }
+
+    public function indexDiagnostics(){
+        $diagnostics = ['diagnostico 1','diagnostico 2', 'diagnostico 3'];
+        return view('admin/diagnostics/index',compact('diagnostics'));
+    }
+
+    public function createDiagnostics(){
+        $mytime = date('Y-m-d H:i:s');
+        return view('admin/diagnostics/create',compact('mytime'));
+    }
+
+    public function indexProposals(){
+        $proposals = ['propuesta 1','propuesta 2', 'propuesta 3'];
+        return view('admin/proposal/index',compact('proposals'));
+    }
+
+    public function createProposals(){
+        return view('admin/proposal/create');
     }
 
 }

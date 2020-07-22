@@ -20,7 +20,7 @@
                     @if(@$enterview != null)
                         <ul class="list-style-9 margin-twelve-left">
                             @foreach($enterview as $enterview)
-                            <li class="text-uppercase"><span class="titles d-block text-extra-small text-white-2">Entrevista </span><a class="ver" href="index.html">Ver más</a></li>
+                            <li class="text-uppercase"><span class="titles d-block text-extra-small text-white-2">{{$enterview++}}</span><a class="ver" href="index.html">Ver más</a></li>
                             @endforeach  
                         </ul>
                         @else

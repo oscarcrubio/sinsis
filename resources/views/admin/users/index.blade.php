@@ -23,10 +23,8 @@
                                 <!-- end pricing title -->
                                 <!-- start pricing price -->
                                 <div class="pricing-price">
-                                
-                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">Standard</span>
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 mb-0">$250</h4>
-                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">Per Month</div>
+                            
+                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 mb-0">{{$user++}}</h4>
                                 </div>
                                 <!-- end pricing price -->
                             </div>
