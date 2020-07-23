@@ -76,8 +76,6 @@ class AdminController extends Controller
         return view('admin/proposal/index',compact('proposals'));
     }
 
-    public function createProposals(){
-        return view('admin/proposal/create');
-    }
+    
 
 }
