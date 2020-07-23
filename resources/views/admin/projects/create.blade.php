@@ -9,13 +9,14 @@
       @include('components.alerts')       
         <div class="row">
             <div class="col-12 wow fadeIn">
-                <form action="" method="post" id="create-project">
+                <form action="{{ route('create-project') }}" method="post" id="create-project">
+                  @csrf
                     <label for="">Nombre del Proyecto:</label>
-                    <input type="text" name="project-name" id="">
+                    <input type="text" name="project_name" id="">
                     <label for="">Descripcion:</label>
-                    <textarea name="project-description" id="" cols="30" rows="10"></textarea>
+                    <textarea name="project_description" id="" cols="30" rows="10"></textarea>
                     <label for="">Empresa</label>
-                    <select name="" id="">
+                    <select name="project_enterprise" id="project-enterprise">
                         @forelse ($enterprises as $enterprise)
                             <option value={{ $enterprise->id }}>{{ $enterprise->name }}</option>
                         @empty
@@ -33,17 +34,21 @@
                         </h5>
                       </div>
                   
-                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">                       
                         <div class="card-body">
                          <form action="" method="post" id="create-enterprise">
+                          <div class="loader" id="enterprise-loader">
+                            <object data={{ asset('images/icons/loader.svg') }} type=""></object>
+                          </div>
+                            @csrf
                              <label for="">Nombre de la empresa:</label>
-                             <input type="text" name="" id="">
+                             <input type="text" name="enterprise-name" id="">
                              <label for="">Razon Social:</label>
-                             <input type="text" name="" id="">
+                             <input type="text" name="enterprise-business-name" id="">
                              <label for="">Ubicacion</label>
-                             <input type="text" name="" id="">
+                             <input type="text" name="enterprise-location" id="">
                              <label for="">Administrador</label>
-                             <select name="" id="select-manager">
+                             <select name="enterprise-manager" id="select-manager">
                                  @forelse ($managers as $manager)
                                      <option value={{ $manager->id }}>{{ $manager->name }}</option>
                                  @empty
@@ -62,6 +67,9 @@
                                   <div id="collapseOne-2" class="collapse" aria-labelledby="headingOne-2" data-parent="#accordionExample-2">
                                     <div class="card-body">
                                         <form action="" method="post" id="create-manager">
+                                          <div class="loader" id="manager-loader">
+                                            <object data={{ asset('images/icons/loader.svg') }} type=""></object>
+                                          </div>
                                           @csrf
                                           <label for="">Nombre responsable</label>
                                           <input type="text" name="manager-name" id="">

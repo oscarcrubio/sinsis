@@ -12,6 +12,7 @@ use App\Enterprise;
 use App\User;
 use App\Enterview;
 
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -41,11 +42,29 @@ class AdminController extends Controller
         return view('admin.projects.index', compact('projects', 'enterprises'));
     }
 
-    public function createProject()
+    public function createProject(Request $request)
     {
-        $managers = User::where('access_level', 1)->get();
-        $enterprises  = Enterprise::all();
-        return view('admin.projects.create', compact('enterprises', 'managers'));
+        switch ($request->project_name != null) {
+            case true:
+                $project = new Project;
+                $project->name = $request->project_name;
+                $project->description = $request->project_description;
+                $project->status = 1;
+                $project->slug = Str::slug($request->project_name);
+                $project->id_enterprise = $request->project_enterprise;
+                $project->save();
+                return redirect()->route('set-project-view', $project->slug);
+            case false:
+                $managers = User::where('access_level', 1)->get();
+                $enterprises  = Enterprise::all();
+                return view('admin.projects.create', compact('enterprises', 'managers'));
+        }
+    }
+
+    public function setProject(Request $request)
+    {
+        $project = Project::where('slug', $request->project_name)->first();
+        return view('admin.projects.project', compact('project'));
     }
 
     public function indexEnterview()
@@ -54,10 +73,16 @@ class AdminController extends Controller
         return view('admin/enterview/index', compact('enterview'));
     }
 
-    public function createEnterview()
+    public function createEnterview(Request $request)
     {
-
-        return view('admin/enterview/create');
+        switch ($request != null) {
+            case true:
+                dd($request);
+                break;
+            case false:
+                return view('admin/enterview/create');
+                break;
+        }
     }
 
     public function indexUser()
@@ -68,7 +93,7 @@ class AdminController extends Controller
 
     public function createUser(Request $request)
     {
-        switch ($request != null) {
+        switch ($request->name != null) {
             case true:
                 //dd($request->name);
                 $pass = Str::random(12);
@@ -90,9 +115,11 @@ class AdminController extends Controller
                 ];
                 //Mail::to($request->email)->queue(new UserPassword($message));
                 return response()->json(array('success' => true, 'data' => $data), 200);
+                break;
                 // dd($user->password);
             case false:
                 return view('admin/users/create');
+                break;
         }
     }
 
@@ -112,5 +139,32 @@ class AdminController extends Controller
     {
         $proposals = ['propuesta 1', 'propuesta 2', 'propuesta 3'];
         return view('admin/proposal/index', compact('proposals'));
+    }
+
+    public function indexEnterprise()
+    {
+        return view('enterprises.index');
+    }
+
+    public function createEnterprise(Request $request)
+    {
+        switch ($request->name != null) {
+            case true:
+                $enterprise = new Enterprise;
+                $enterprise->name = $request->name;
+                $enterprise->business_name = $request->business_name;
+                $enterprise->location = $request->location;
+                $enterprise->id_client = $request->manager;
+                $enterprise->save();
+                $data = [
+                    'name' => $enterprise->name,
+                    'id' => $enterprise->id,
+                ];
+                return response()->json(array('success' => true, 'data' => $data), 200);
+                break;
+            case false:
+                return view('admin.enterprises.create');
+                break;
+        }
     }
 }

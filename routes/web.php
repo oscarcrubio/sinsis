@@ -29,54 +29,72 @@ Route::group(
     [
         'prefix' => 'admin'
     ],
-    function(){
+    function () {
         Route::get('/', array('as' => 'admin', 'uses' => 'AdminController@dashboard'));
         Route::group(
             [
                 'prefix' => 'project'
             ],
-            function(){
+            function () {
                 Route::get('/', array('as' => 'projects', 'uses' => 'AdminController@indexProject'));
                 Route::get('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
-            });
+                Route::post('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
+                Route::get('/{project_name}', array('as' => 'set-project-view', 'uses' => 'AdminController@setProject'));
+            }
+        );
 
 
         Route::group(
             [
                 'prefix' => 'enterview'
             ],
-            function(){
+            function () {
                 Route::get('/', array('as' => 'enterview', 'uses' => 'AdminController@indexEnterview'));
                 Route::get('/create', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
-            });   
-            
+            }
+        );
+
         Route::group(
             [
-                 'prefix' => 'user'
+                'prefix' => 'user'
             ],
-            function(){
+            function () {
                 Route::get('/', array('as' => 'user', 'uses' => 'AdminController@indexUser'));
                 Route::get('/create', array('as' => 'create-user', 'uses' => 'AdminController@createUser'));
                 Route::post('/create', array('as' => 'create-user', 'uses' => 'AdminController@createUser'));
-            });
-            
+            }
+        );
+
         Route::group(
             [
-                 'prefix' => 'diagnostics'
+                'prefix' => 'diagnostics'
             ],
-            function(){
+            function () {
                 Route::get('/', array('as' => 'diagnostics', 'uses' => 'AdminController@indexDiagnostics'));
                 Route::get('/create', array('as' => 'create-diagnostics', 'uses' => 'AdminController@createDiagnostics'));
-                });   
+            }
+        );
+
         Route::group(
             [
-                 'prefix' => 'proposals'
+                'prefix' => 'enterprise'
             ],
-            function(){
+            function () {
+                Route::get('/', array('as' => 'enterprise', 'uses' => 'AdminController@indexEnterprise'));
+                Route::get('/create', array('as' => 'create-enterprise', 'uses' => 'AdminController@createEnterprise'));
+                Route::post('/create', array('as' => 'create-enterprise', 'uses' => 'AdminController@createEnterprise'));
+            }
+        );
+
+        Route::group(
+            [
+                'prefix' => 'proposals'
+            ],
+            function () {
                 Route::get('/', array('as' => 'proposals', 'uses' => 'AdminController@indexProposals'));
                 Route::get('create', array('as' => 'create-proposals', 'uses' => 'DropzoneController@createProposals'));
                 Route::post('create/upload', array('as' => 'create.upload', 'uses' => 'DropzoneController@upload'));
-                });   
-    });
-
-
+            }
+        );
+    }
+);
