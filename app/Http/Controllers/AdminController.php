@@ -113,9 +113,4 @@ class AdminController extends Controller
         $proposals = ['propuesta 1', 'propuesta 2', 'propuesta 3'];
         return view('admin/proposal/index', compact('proposals'));
     }
-
-    public function createProposals()
-    {
-        return view('admin/proposal/create');
-    }
 }
