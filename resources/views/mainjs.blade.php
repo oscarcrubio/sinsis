@@ -50,6 +50,7 @@
         <script type="text/javascript" src={{ asset('revolution/js/jquery.themepunch.tools.min.js')}}></script>
         <script type="text/javascript" src={{ asset('revolution/js/jquery.themepunch.revolution.min.js')}}></script>
         <script type="text/javascript" src={{ asset('js/main.js')}}></script>
+        <script type="text/javascript" src={{ asset('js/scripts/dashboard.js')}}></script>
         <!--<script type="text/javascript" src={{ asset('revolution/js/extensions/revolution.extension.actions.min.js')}}></script>
         <script type="text/javascript" src={{ asset('revolution/js/extensions/revolution.extension.carousel.min.js')}}></script>
         <script type="text/javascript" src={{ asset('revolution/js/extensions/revolution.extension.kenburn.min.js')}}></script>

@@ -9,9 +9,9 @@
     <div class="container projects-container">        
         <div class="row">
             <div class="col-12 wow fadeIn"> 
-            @if (@$user != null)         
+            @if (@$users != null)         
                 <div class="row pricing-box-style1">
-                @foreach ($user as $user) 
+                @foreach ($users as $user) 
                     <!-- start pricing item -->
                     <div class="col-12 col-md-4 text-center md-margin-30px-bottom wow fadeInUp">
                         <div class="pricing-box border border-color-extra-light-gray">
@@ -23,8 +23,7 @@
                                 <!-- end pricing title -->
                                 <!-- start pricing price -->
                                 <div class="pricing-price">
-                            
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 mb-0">{{$user++}}</h4>
+                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 mb-0">{{$user}}</h4>
                                 </div>
                                 <!-- end pricing price -->
                             </div>

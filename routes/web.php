@@ -57,6 +57,7 @@ Route::group(
             function(){
                 Route::get('/', array('as' => 'user', 'uses' => 'AdminController@indexUser'));
                 Route::get('/create', array('as' => 'create-user', 'uses' => 'AdminController@createUser'));
+                Route::post('/create', array('as' => 'create-user', 'uses' => 'AdminController@createUser'));
             });
             
         Route::group(

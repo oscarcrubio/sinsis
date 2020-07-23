@@ -98,13 +98,12 @@ class QuestionSeeder extends Seeder
         ];
 
 
-        foreach ($question as $key => $squestion) {
+        foreach ($question as $key => $squestion) {            
             $question = new Question();
             $question->question = $squestion['question'];
             $question->status = 1;
             $question->created_at = Carbon\Carbon::now();
             $question->save();
-                    
         }
     }
 }
