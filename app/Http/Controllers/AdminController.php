@@ -11,6 +11,7 @@ use App\Project;
 use App\Enterprise;
 use App\User;
 use App\Enterview;
+use App\Question;
 
 
 class AdminController extends Controller
@@ -27,10 +28,12 @@ class AdminController extends Controller
                 dd('acces 1');
                 break;
             case 2:
-                return view('admin.index');
+                $projects = Project::getProjects();
+                return view('admin.index', compact('projects'));
                 break;
             case 3:
-                return view('admin.index');
+                $projects = Project::getProjects();
+                return view('admin.index', compact('projects'));
                 break;
         }
     }
@@ -38,7 +41,7 @@ class AdminController extends Controller
     public function indexProject()
     {
         $enterprises  = Enterprise::all();
-        $projects = ['lomre', 'lorem'];
+        $projects = Project::getProjects();
         return view('admin.projects.index', compact('projects', 'enterprises'));
     }
 
@@ -55,9 +58,10 @@ class AdminController extends Controller
                 $project->save();
                 return redirect()->route('set-project-view', $project->slug);
             case false:
+                $projects = Project::getProjects();
                 $managers = User::where('access_level', 1)->get();
                 $enterprises  = Enterprise::all();
-                return view('admin.projects.create', compact('enterprises', 'managers'));
+                return view('admin.projects.create', compact('enterprises', 'managers', 'projects'));
         }
     }
 
@@ -75,14 +79,9 @@ class AdminController extends Controller
 
     public function createEnterview(Request $request)
     {
-        switch ($request != null) {
-            case true:
-                dd($request);
-                break;
-            case false:
-                return view('admin/enterview/create');
-                break;
-        }
+        $projects = Project::getProjects();
+        $questions = Question::where('status', 1)->get();
+        return view('admin.enterview.create', compact('questions', 'projects'));
     }
 
     public function indexUser()
@@ -95,7 +94,6 @@ class AdminController extends Controller
     {
         switch ($request->name != null) {
             case true:
-                //dd($request->name);
                 $pass = Str::random(12);
                 $user = new User;
                 $user->name = $request->name;
