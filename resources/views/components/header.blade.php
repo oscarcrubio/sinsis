@@ -32,11 +32,11 @@
                             <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
                                 <!-- start menu item -->
                                 <li class="dropdown megamenu-fw">
-                                    <a href="#">Inicio</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                                    <a href={{ route('home') }}>Inicio</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
                                     <!-- start sub menu -->                                    
                                 </li>
                                 <!-- end menu item -->
-                                <li class="dropdown simple-dropdown"><a href="#">Nosotros</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
+                                <li class="dropdown simple-dropdown"><a href={{ route('nosotros') }}>Nosotros</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
                                 <li class="dropdown megamenu-fw">
                                     <a href={{ route('contact') }}>Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        

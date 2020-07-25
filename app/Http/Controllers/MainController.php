@@ -12,4 +12,7 @@ class MainController extends Controller
     public function contact(){
         return view('contact');
     }
+    public function nosotros(){
+        return view('nosotros');
+    }
 }

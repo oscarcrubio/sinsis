@@ -12,7 +12,7 @@
                     <!--<div class="linea box-separator-line width-180px bg-white lg-width-120px md-width-90px d-none d-lg-block"></div>-->
                         <h1 class="first font-weight-600 alt-font text-white-2 width-95 md-width-100">SIN SIS</h1>
                         <p class="first text-large font-weight-300 text-white-2 width-75 lg-width-85 md-width-95 sm-width-100 d-none d-md-block">Somos actualmente una de las mejores empresas enfocadas en la consultoria, nuestros clientes nos avalan, ven y conoce un poco mas</p>
-                        <a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-medium btn-white margin-40px-top text-link-deep-pink sm-margin-10px-top">Nosotros</a>
+                        <a href={{ route('nosotros')}} target="_blank" class="btn btn-medium btn-white margin-40px-top text-link-deep-pink sm-margin-10px-top">Nosotros</a>
                     </div>
                 </div> 
             </div>
