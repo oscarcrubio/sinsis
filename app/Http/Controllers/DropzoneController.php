@@ -17,8 +17,12 @@ class DropzoneController extends Controller
     function upload(Request $request)
     {
         $image = $request->file('file');
-        $imageName = time() . '.' . $image->extension();
+        $imageName =  rand() . '.' . $image->extension();
         $image->move(base_path('\public\uploads'), $imageName);
-        return reponse()->json(['success' => $imageName]);
+
+        $imageUpload = new Image();
+        $imageUpload->filename = $imageName;
+        $imageUpload->save();
+        return response()->json(['success'=>$imageName]);
     }
 }

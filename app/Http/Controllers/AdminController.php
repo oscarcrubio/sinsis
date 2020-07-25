@@ -154,7 +154,6 @@ class AdminController extends Controller
 
     public function createDiagnostics()
     {
-        $mytime = date('Y-m-d H:i:s');
         return view('admin/diagnostics/create', compact('mytime'));
     }
 
