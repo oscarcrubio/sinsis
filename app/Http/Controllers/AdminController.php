@@ -56,6 +56,8 @@ class AdminController extends Controller
                 $project->slug = Str::slug($request->project_name);
                 $project->id_enterprise = $request->project_enterprise;
                 $project->save();
+                $user = User::where('id', Auth::user()->id)->first();
+                $user->projects()->attach(Auth::user()->id, ['project_id' => $project->id]);
                 return redirect()->route('set-project-view', $project->slug);
             case false:
                 $projects = Project::getProjects();
@@ -67,8 +69,16 @@ class AdminController extends Controller
 
     public function setProject(Request $request)
     {
+        $projects = Project::getProjects();
         $project = Project::where('slug', $request->project_name)->first();
-        return view('admin.projects.project', compact('project'));
+        $enterprise = Enterprise::where('id', $project->id_enterprise)->first();
+        $users_id = [];
+        foreach ($project->users as $user) {
+            array_push($users_id, $user->id);
+        }
+        $users = User::whereNotIn('id', $users_id)
+            ->where('access_level', '>=', 2)->get();
+        return view('admin.projects.project', compact('project', 'projects', 'users', 'enterprise'));
     }
 
     public function indexEnterview()

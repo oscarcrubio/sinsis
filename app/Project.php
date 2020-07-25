@@ -18,4 +18,10 @@ class Project extends Model
         }
         return $projects;
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'consultants_project')
+            ->withPivot('user_id');
+    }
 }
