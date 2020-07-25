@@ -14,7 +14,7 @@ class Project extends Model
         if (Auth::user()->access_level == 3) {
             $projects = Project::all();
         } else {
-            dd('lorem');
+            $projects = Project::all();
         }
         return $projects;
     }

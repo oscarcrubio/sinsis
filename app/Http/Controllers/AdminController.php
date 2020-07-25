@@ -91,7 +91,8 @@ class AdminController extends Controller
     {
         $projects = Project::getProjects();
         $questions = Question::where('status', 1)->get();
-        return view('admin.enterview.create', compact('questions', 'projects'));
+        $conta = 1;
+        return view('admin.enterview.create', compact('questions', 'projects', 'conta'));
     }
 
     public function indexUser()
