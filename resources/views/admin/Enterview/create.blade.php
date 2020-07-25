@@ -15,13 +15,13 @@
                 <div id="{{$conta++}}">
                     <label value="{{ $question->id}} ">{{ $question->question}}</label>
                     <div>
-                        <input data-id="" type="checkbox" name="" id="si" value="Si">Si
+                        <input type="checkbox" name="{{ $question->id }}" id="si">Si
                     </div>
                 </div>
                 @else
-                <div class="{{$conta==7 || $conta==8 || $conta==9? 'd-none  pregunta-sec':''}}" id="{{$conta++}}">
+                <div class="{{$conta==7 || $conta==8 || $conta==9 ? 'd-none  pregunta-sec':''}}" id="{{$conta++}}">
                     <label value="{{ $question->id}} ">{{ $question->question}}</label>
-                    <input type="text" name="question_{{$question->id}}" id="">
+                    <input type="text" name="{{$question->id}}" id="">
                 </div>
                 @endif
                 @endforeach

@@ -55,7 +55,6 @@ $(`input[name ="create-enterprise-button"]`).on("click", (e) => {
         },
         beforeSend: () => {},
     }).done((response) => {
-        //console.log(response);
         $(`#enterprise-loader`).css({ display: "flex" });
         setTimeout(() => {
             $(`#enterprise-created-alert`).removeClass("d-none");
@@ -72,45 +71,24 @@ $(`input[name ="create-enterprise-button"]`).on("click", (e) => {
         $(`input[name ="enterprise-business-name"]`).val("");
         $(`input[name ="enterprise-location"]`).val("");
     });
-    //console.log(name, business_name, location, manager, token);
 });
 
 $(`input[name ="create-project-button"]`).on("click", (e) => {
     e.preventDefault();
     $("#create-project").submit();
 });
-
-
-    //$("#si").on("click",function(){
-	  //  $('#ok').removeClass('.hide2');
-    //});
-
-    //$("#no").click(function (e){
-      //  $("#7").css({display: "none"});
-        //$("#8").css({display: "none"});
-        //$("#9").css({display: "none"});
-    //})
-
-    //$("#si").click(function (e){
-      //  $("#7").css({display: "block"});
-        //$("#8").css({display: "block"});
-        //$("#9").css({display: "block"});
-    //})
-
-    $('#si:checkbox').change(function(){
-        if(this.checked){
-            if($(".pregunta-sec").hasClass("d-none")){
-                $(".pregunta-sec").removeClass("d-none")
-
-            }
-            $("#7").addClass('border');
-            $("#7").css({display: "block"});
-            $("#8").addClass('border');
-            $("#8").css({display: "block"});
-            $("#9").addClass('border');
-            $("#9").css({display: "block"});
+$("#si:checkbox").change(function () {
+    if (this.checked) {
+        if ($(".pregunta-sec").hasClass("d-none")) {
+            $(".pregunta-sec").removeClass("d-none");
         }
-        else{
-            $(".pregunta-sec").addClass("d-none");
-        }
-    })
+        $("#7").addClass("border");
+        $("#7").css({ display: "block" });
+        $("#8").addClass("border");
+        $("#8").css({ display: "block" });
+        $("#9").addClass("border");
+        $("#9").css({ display: "block" });
+    } else {
+        $(".pregunta-sec").addClass("d-none");
+    }
+});

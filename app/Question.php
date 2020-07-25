@@ -10,6 +10,6 @@ class Question extends Model
     public function enterviews()
     {
         return $this->belongsToMany('App\enterview', 'enterview_questions')
-        ->withPivot(enterview_id);
+            ->withPivot('enterview_id', 'question_id', 'answer');
     }
 }

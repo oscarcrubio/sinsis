@@ -15,8 +15,8 @@ class CreateEnterviewQuestionsTable extends Migration
     {
         Schema::create('enterview_questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_enterview');
-            $table->unsignedBigInteger('id_question');
+            $table->unsignedBigInteger('enterview_id');
+            $table->unsignedBigInteger('question_id');
             $table->foreign('id_enterview')->references('id')->on('enterviews');
             $table->foreign('id_question')->references('id')->on('questions');
             $table->string('answer');

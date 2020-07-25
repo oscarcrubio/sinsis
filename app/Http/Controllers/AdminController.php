@@ -12,7 +12,7 @@ use App\Enterprise;
 use App\User;
 use App\Enterview;
 use App\Question;
-
+use Symfony\Component\Console\Input\Input;
 
 class AdminController extends Controller
 {
@@ -89,21 +89,19 @@ class AdminController extends Controller
 
     public function createEnterview(Request $request)
     {
-        switch($request->question_1 != null){
+        switch ($request->_token != null) {
             case true:
-               //dd($request->request);
-               $enterview = new Enterview;
-               $enterview->id_consultor = Auth::user()->id;
-               $enterview->id_project = 1;
-               $enterview->save();
-               $enterview_id = $enterview->id;
-               foreach($request->request as $question){
-                $enterview->questions>attach($enterview_id, ['question_id' => $question->id],$question);
-               };
-
-                
-                
-            case false: 
+                $enterview = new Enterview;
+                $enterview->id_consultor = Auth::user()->id;
+                $enterview->id_project = 1;
+                $enterview->save();
+                $questions = array_diff($request->all(), ["C5ICJ7wlCYNLSeRBY0RtBbMeQTuFMqYbHgIwCWis", "Enviar"]);
+                foreach ($questions as $key => $question) {
+                    $question_id = array_keys($questions);
+                    $enterview->questions()->attach(['question_id' => $question_id[$key - 1]], ['answer' => $question]);
+                };
+                return redirect()->back();
+            case false:
                 $projects = Project::getProjects();
                 $questions = Question::where('status', 1)->get();
                 $conta = 1;
