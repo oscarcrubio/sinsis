@@ -5,16 +5,18 @@
     <header class="main-admin-header position-fixed">
        <span>Nuevo Proyecto</span>
     </header>
-    <div class="container projects-container">        
+    <div class="container projects-container"> 
+      @include('components.alerts')       
         <div class="row">
             <div class="col-12 wow fadeIn">
-                <form action="" method="post" id="create-project">
+                <form action="{{ route('create-project') }}" method="post" id="create-project">
+                  @csrf
                     <label for="">Nombre del Proyecto:</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="project_name" id="">
                     <label for="">Descripcion:</label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <textarea name="project_description" id="" cols="30" rows="10"></textarea>
                     <label for="">Empresa</label>
-                    <select name="" id="">
+                    <select name="project_enterprise" id="project-enterprise">
                         @forelse ($enterprises as $enterprise)
                             <option value={{ $enterprise->id }}>{{ $enterprise->name }}</option>
                         @empty
@@ -32,15 +34,21 @@
                         </h5>
                       </div>
                   
-                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">                       
                         <div class="card-body">
                          <form action="" method="post" id="create-enterprise">
+                          <div class="loader" id="enterprise-loader">
+                            <object data={{ asset('images/icons/loader.svg') }} type=""></object>
+                          </div>
+                            @csrf
                              <label for="">Nombre de la empresa:</label>
-                             <input type="text" name="" id="">
+                             <input type="text" name="enterprise-name" id="">
                              <label for="">Razon Social:</label>
-                             <input type="text" name="" id="">
+                             <input type="text" name="enterprise-business-name" id="">
                              <label for="">Ubicacion</label>
-                             <select name="" id="">
+                             <input type="text" name="enterprise-location" id="">
+                             <label for="">Administrador</label>
+                             <select name="enterprise-manager" id="select-manager">
                                  @forelse ($managers as $manager)
                                      <option value={{ $manager->id }}>{{ $manager->name }}</option>
                                  @empty
@@ -59,26 +67,31 @@
                                   <div id="collapseOne-2" class="collapse" aria-labelledby="headingOne-2" data-parent="#accordionExample-2">
                                     <div class="card-body">
                                         <form action="" method="post" id="create-manager">
-                                          <input type="text" name="" id="">
+                                          <div class="loader" id="manager-loader">
+                                            <object data={{ asset('images/icons/loader.svg') }} type=""></object>
+                                          </div>
+                                          @csrf
                                           <label for="">Nombre responsable</label>
-                                          <input type="text" name="" id="">
+                                          <input type="text" name="manager-name" id="">
                                           <label for="">Correo Electronico</label>
-                                          <input type="text" name="" id="">
+                                          <input type="email" name="manager-email" id="">
                                           <label for="">Cargo</label>
-                                          <input type="text" name="" id="">
+                                          <input type="text" name="manager-charge" id="">
+                                          <input type="submit" name="create-manager-button" value="Guardar Nuevo Administrador">
                                         </form>
                                     </div>
                                   </div>
                                 </div>                                                                
-                              </div>                            
+                              </div>
                          </form>
-                        </div>
-                      </div>
-                    </div>
+                         <input type="submit" name="create-enterprise-button" value="Guardar Nueva Empresa">
+                        </div>                        
+                      </div>                      
+                    </div>                    
                   </div>
-                  <input type="submit" name="button_1" value="Crear">
+                  <input type="submit" name="create-project-button" value="Crear Proyecto">
             </div>
         </div>
-    </div>
+    </div>    
 </section>
 @endsection

@@ -107,11 +107,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end feature box item -->
-                    <img class="img1" src="images/home/office1.jpg">
+                    <!-- end feature box item -->                    
                 </div>
             </div> 
-            <div class="col-12 col-lg-6 cover-background md-height-400px wow fadeInRight" style="background-image:url('images/services-classic-07.jpg');"></div>
+            <div class="col-12 col-lg-6 cover-background md-height-400px wow fadeInRight" style="background-image:url({{ asset('images/home/office1.jpg') }});"></div>
         </div>
     </div>
 </section>

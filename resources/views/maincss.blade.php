@@ -26,6 +26,8 @@
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
         <![endif]-->
+        <!-- dropzone css buto -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
         <link rel="stylesheet" href="{{ asset('css/styles/main.css') }}">   
         <link rel="stylesheet" href="{{ asset('css/musustyles/mstyles.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles/marcel.css') }}">        

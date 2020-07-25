@@ -9,9 +9,9 @@
     <div class="container projects-container">        
         <div class="row">
             <div class="col-12 wow fadeIn">
-               @if (@$projects != null)                             
+               @if (count(@$projects) > 0)
                    <!-- start pricing table style 01 section -->             
-                <div class="row pricing-box-style1">
+                <div class="row pricing-box-style1">                                       
                     @foreach ($projects as $project) 
                     <!-- start pricing item -->
                     <div class="col-12 col-md-4 text-center md-margin-30px-bottom wow fadeInUp">
