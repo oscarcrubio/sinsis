@@ -17,14 +17,14 @@
                 </form>
                     <div class="container-fluid">
                             <br />
-                        <h3 align="center">Image Upload in Laravel using Dropzone</h3>
+                        <h3 align="center"></h3>
                             <br /> 
                         <div class="panel panel-default">
                             <div class="panel-heading">
                             <h3 class="panel-title">Select Image</h3>
                             </div>
                             <div class="panel-body">
-                            <form id="dropzoneForm" class="dropzone" action="{{ route('create.upload') }}">
+                            <form id="dropzoneForm" method="post"  class="dropzone" action="{{ route('create.upload') }}">
                                 @csrf
                             </form><br>
                                 <div align="center">
