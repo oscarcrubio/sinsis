@@ -79,3 +79,36 @@ $(`input[name ="create-project-button"]`).on("click", (e) => {
     e.preventDefault();
     $("#create-project").submit();
 });
+
+
+    //$("#si").on("click",function(){
+	  //  $('#ok').removeClass('.hide2');
+    //});
+
+    //$("#no").click(function (e){
+      //  $("#7").css({display: "none"});
+        //$("#8").css({display: "none"});
+        //$("#9").css({display: "none"});
+    //})
+
+    //$("#si").click(function (e){
+      //  $("#7").css({display: "block"});
+        //$("#8").css({display: "block"});
+        //$("#9").css({display: "block"});
+    //})
+
+    $('#si:checkbox').change(function(){
+        if(this.checked){
+            $("#7").addClass('border');
+            $("#7").css({display: "block"});
+            $("#8").addClass('border');
+            $("#8").css({display: "block"});
+            $("#9").addClass('border');
+            $("#9").css({display: "block"});
+        }
+        else{
+            $("#7").css({display: "none"});
+            $("#8").css({display: "none"});
+            $("#9").css({display: "none"});
+        }
+    })

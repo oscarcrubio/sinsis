@@ -31,17 +31,19 @@
                   <a href={{ route('projects') }} title="Proyectos" data-toggle="dropdown">Proyectos<i class="fas fa-angle-right pull-right"></i></a>
                   <ul class="dropdown-menu second-level">
                       <li class="dropdown">
-                          <a href={{ route('create-project') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>                         
+                          <a href={{ route('create-project') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>
                       </li>
+                      @if (count(@$projects) > 0 )
+                      @foreach ($projects as $project)
+                        <li class="dropdown">
+                            <a href="#" title="Projectos" data-toggle="dropdown">{{ $project->name }}</i></a>                          
+                        </li>
+                      @endforeach
+                      @else
                       <li class="dropdown">
-                          <a href="#" title="Projectos" data-toggle="dropdown">Creative</i></a>                          
-                      </li>
-                      <li class="dropdown">
-                          <a href="#" title="Projectos" data-toggle="dropdown">Portfolio</i></a>                          
-                      </li>
-                      <li class="dropdown">
-                          <a href="#" title="Projectos" data-toggle="dropdown">Blog</i></a>                          
-                      </li>
+                        <a title="Projectos" data-toggle="dropdown">No hay proyectos activos</i></a>                          
+                    </li>
+                      @endif                      
                   </ul>
               </li>
 

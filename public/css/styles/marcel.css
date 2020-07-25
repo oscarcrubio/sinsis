@@ -27,3 +27,10 @@
 .ver:hover{
     color: rgb(250, 167, 12);
 }
+.hide{
+    display: none;
+}
+.border{
+    border: 2px solid black!important;
+    margin-bottom: 5px;
+}
