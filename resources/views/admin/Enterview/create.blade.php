@@ -8,8 +8,10 @@
     <div class="container projects-container">        
         <div class="row">
             <div class="col-12 wow fadeIn">
-                <form action="" method="post">
-                    <label for="">1.-Razon social de la empresa</label>
+                <form action=".database.seeds.QuestionSeeder" method="post">
+                @foreach($questions as $question)
+                    <label value="{{ $question->id }}">{{ $question->question}} for=""></label>
+                @endforeach
                     <input type="text" name="" id="">
                     <label for="">2.-Nombre de la empresa</label>
                     <input type="text" name="" id="">

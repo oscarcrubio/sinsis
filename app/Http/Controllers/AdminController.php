@@ -47,8 +47,8 @@ class AdminController extends Controller
     }
 
     public function createEnterview(){
-        
-        return view('admin/enterview/create');
+        $questions = Enterview::all();
+        return view('admin/enterview/create', compact('questions'));
     }
 
     public function indexUser(){
