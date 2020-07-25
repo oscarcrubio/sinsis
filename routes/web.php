@@ -51,6 +51,7 @@ Route::group(
             function () {
                 Route::get('/', array('as' => 'enterview', 'uses' => 'AdminController@indexEnterview'));
                 Route::get('/create', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
+                Route::post('/createQuestions', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
             }
         );
 

@@ -99,6 +99,10 @@ $(`input[name ="create-project-button"]`).on("click", (e) => {
 
     $('#si:checkbox').change(function(){
         if(this.checked){
+            if($(".pregunta-sec").hasClass("d-none")){
+                $(".pregunta-sec").removeClass("d-none")
+
+            }
             $("#7").addClass('border');
             $("#7").css({display: "block"});
             $("#8").addClass('border');
@@ -107,8 +111,6 @@ $(`input[name ="create-project-button"]`).on("click", (e) => {
             $("#9").css({display: "block"});
         }
         else{
-            $("#7").css({display: "none"});
-            $("#8").css({display: "none"});
-            $("#9").css({display: "none"});
+            $(".pregunta-sec").addClass("d-none");
         }
     })

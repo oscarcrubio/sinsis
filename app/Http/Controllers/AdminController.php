@@ -89,10 +89,26 @@ class AdminController extends Controller
 
     public function createEnterview(Request $request)
     {
-        $projects = Project::getProjects();
-        $questions = Question::where('status', 1)->get();
-        $conta = 1;
-        return view('admin.enterview.create', compact('questions', 'projects', 'conta'));
+        switch($request->question_1 != null){
+            case true:
+               //dd($request->request);
+               $enterview = new Enterview;
+               $enterview->id_consultor = Auth::user()->id;
+               $enterview->id_project = 1;
+               $enterview->save();
+               $enterview_id = $enterview->id;
+               foreach($request->request as $question){
+                $enterview->questions>attach($enterview_id, ['question_id' => $question->id],$question);
+               };
+
+                
+                
+            case false: 
+                $projects = Project::getProjects();
+                $questions = Question::where('status', 1)->get();
+                $conta = 1;
+                return view('admin.enterview.create', compact('questions', 'projects', 'conta'));
+        }
     }
 
     public function indexUser()

@@ -8,7 +8,8 @@
     <div class="container projects-container">        
         <div class="row">
             <div class="col-12 wow fadeIn">
-                <form action=".database.seeds.QuestionSeeder" method="post">
+                <form action="{{route('create-enterview')}}" method="post">
+                @csrf
                 @foreach($questions as $question)
                 @if($question-> id == 6)
                 <div id="{{$conta++}}">
@@ -18,14 +19,14 @@
                     </div>
                 </div>
                 @else
-                <div id="{{$conta++}}">
+                <div class="{{$conta==7 || $conta==8 || $conta==9? 'd-none  pregunta-sec':''}}" id="{{$conta++}}">
                     <label value="{{ $question->id}} ">{{ $question->question}}</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="question_{{$question->id}}" id="">
                 </div>
                 @endif
                 @endforeach
-                </form>
                 <input type="submit" name="button_1" value="Enviar">
+                </form>
             </div>
         </div>
     </div>
