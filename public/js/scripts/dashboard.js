@@ -92,3 +92,9 @@ $("#si:checkbox").change(function () {
         $(".pregunta-sec").addClass("d-none");
     }
 });
+
+//Date project
+var fecha = new Date($("#project-date").text());
+var options = { year: "numeric", month: "long", day: "numeric" };
+$("#date-format").text(fecha.toLocaleDateString("es-ES", options));
+//Date project end

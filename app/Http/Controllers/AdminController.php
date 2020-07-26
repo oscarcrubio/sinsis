@@ -72,13 +72,14 @@ class AdminController extends Controller
         $projects = Project::getProjects();
         $project = Project::where('slug', $request->project_name)->first();
         $enterprise = Enterprise::where('id', $project->id_enterprise)->first();
+        $enterviews = $project->load('enterviews');
         $users_id = [];
         foreach ($project->users as $user) {
             array_push($users_id, $user->id);
         }
         $users = User::whereNotIn('id', $users_id)
             ->where('access_level', '>=', 2)->get();
-        return view('admin.projects.project', compact('project', 'projects', 'users', 'enterprise'));
+        return view('admin.projects.project', compact('project', 'projects', 'users', 'enterprise', 'enterviews'));
     }
 
     public function indexEnterview()
@@ -92,8 +93,8 @@ class AdminController extends Controller
         switch ($request->_token != null) {
             case true:
                 $enterview = new Enterview;
-                $enterview->id_consultor = Auth::user()->id;
-                $enterview->id_project = 1;
+                $enterview->consultor_id = Auth::user()->id;
+                $enterview->project_id = 1;
                 $enterview->save();
                 $questions = array_diff($request->all(), ["C5ICJ7wlCYNLSeRBY0RtBbMeQTuFMqYbHgIwCWis", "Enviar"]);
                 foreach ($questions as $key => $question) {

@@ -17,8 +17,8 @@ class CreateEnterviewQuestionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('enterview_id');
             $table->unsignedBigInteger('question_id');
-            $table->foreign('id_enterview')->references('id')->on('enterviews');
-            $table->foreign('id_question')->references('id')->on('questions');
+            $table->foreign('enterview_id')->references('id')->on('enterviews');
+            $table->foreign('question_id')->references('id')->on('questions');
             $table->string('answer');
             $table->timestamps();
         });

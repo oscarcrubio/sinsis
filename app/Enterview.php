@@ -11,4 +11,9 @@ class Enterview extends Model
         return $this->belongsToMany('App\question', 'enterview_questions')
             ->withPivot('enterview_id', 'question_id', 'answer');
     }
+
+    public function projects()
+    {
+        $this->belongsTo('App\Project');
+    }
 }

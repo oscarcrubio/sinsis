@@ -22,8 +22,12 @@
             <aside class="col-12 col-lg-3">               
                 <div class="margin-45px-bottom sm-margin-25px-bottom">
                     <div class="margin-45px-bottom sm-margin-25px-bottom">
-                        <div class="text-extra-dark-gray margin-20px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Estado</span></div>
-                        <a class="btn btn-very-small btn-transparent-white border text-uppercase w-100" href="portfolio-boxed-grid-overlay.html">Explore Portfolio</a>
+                        <div class="text-extra-dark-gray margin-20px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Estado</span></div>                        
+                        @if ($project->status == 1)
+                        <a class="btn btn-very-small btn-transparent-white border text-uppercase w-100" >proyecto activo</a>
+                        @else
+                        <a class="btn btn-very-small btn-transparent-white border text-uppercase w-100" href="portfolio-boxed-grid-overlay.html">Proyecto Cerrado</a>
+                        @endif
                     </div> 
                     <div class="margin-45px-bottom sm-margin-25px-bottom">
                         <div class="text-extra-dark-gray margin-20px-bottom alt-font text-uppercase text-small font-weight-600 aside-title"><span>Administradores</span></div>
@@ -46,7 +50,7 @@
                 <div class="margin-45px-bottom sm-margin-25px-bottom">
                     <div class="text-extra-dark-gray margin-20px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Contenido</span></div>
                     <ul class="list-style-6 margin-50px-bottom text-small">
-                        <li><a href="blog-masonry.html">Entrevistas</a><span>12</span></li>
+                        <li><a href="blog-masonry.html">Entrevistas</a><span>{{ count($project->enterviews) }}</span></li>
                         <li><a href="blog-masonry.html">Diagnosticos</a><span>05</span></li>
                         <li><a href="blog-masonry.html">Propuestas</a><span>08</span></li>                       
                     </ul>   
@@ -59,16 +63,37 @@
                 </div>
             </aside>
             <main class="col-12 col-lg-9 right-sidebar md-margin-60px-bottom sm-margin-40px-bottom md-padding-15px-lr">
-                <!-- start post item --> 
-                <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">
-                    <div class="col-12 col-lg-5 blog-image p-0 md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right">
-                        <a href="blog-standard-post.html"><img src="http://placehold.it/1200x840" alt=""></a>
-                    </div>
-                    <div class="col-12 col-lg-6 blog-text p-0">
+                <!-- start post item -->
+                <span>Ultima modificación: {{ date_format($project->updated_at, 'g:ia')}} - </span> <span  id="project-date" class="d-none">{{ date_format($project->updated_at, 'l d F Y')}}</span>
+                <span id="date-format"></span>
+                <hr>
+                <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">                    
+                    <div class="col-12 col-lg-12 blog-text p-0">
                         <div class="content margin-20px-bottom md-no-padding-left ">
-                            <a href="blog-standard-post.html" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Design is thinking made visual</a>
-                            <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="blog-grid.html" class="text-medium-gray">Emily Wright</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>17 july 2017</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="blog-grid.html" class="text-medium-gray">Design</a></div>
-                            <p class="m-0 width-95">Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the industry industry’s standard dummy text Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="blog-standard-post.html" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Entrevistas</a>
+                            @foreach ($project->enterviews as $enterview)                           
+                            <div class="accordion" id="accordionExample-2">
+                                <div class="card">
+                                  <div class="card-header" id="headingOne-2">
+                                    <h5 class="mb-0">
+                                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne-2" aria-expanded="true" aria-controls="collapseOne-2">
+                                        {{ $enterview->id }}
+                                      </button>
+                                    </h5>
+                                  </div>                              
+                                  <div id="collapseOne-2" class="collapse" aria-labelledby="headingOne-2" data-parent="#accordionExample-2">                                      
+                                    <div class="card-body">
+                                        @if ($enterview->id == 2)                   
+                                        @foreach ($enterview->questions as $question)
+                                            {{ $question->question }}<br/>
+                                            {{ ($question->pivot->answer) }}<br/>
+                                        @endforeach
+                                        @endif
+                                    </div>
+                                  </div>
+                                </div>                                                                
+                              </div>
+                            @endforeach
                         </div>
                         <a class="btn btn-very-small btn-dark-gray text-uppercase" href="blog-standard-post.html">Continue Reading</a>
                     </div>

@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Enterview;
+use App\Diagnostic;
+use App\Proposal;
 
 class Project extends Model
 {
@@ -23,5 +26,20 @@ class Project extends Model
     {
         return $this->belongsToMany('App\User', 'consultants_project')
             ->withPivot('user_id');
+    }
+
+    public function enterviews()
+    {
+        return $this->hasMany('App\Enterview');
+    }
+
+    public function proposals()
+    {
+        return $this->hasMany('App\Proposals');
+    }
+
+    public function diagnostic()
+    {
+        return $this->hasOne('App\Diagnostic');
     }
 }
