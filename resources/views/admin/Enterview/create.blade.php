@@ -10,6 +10,7 @@
             <div class="col-12 wow fadeIn">
                 <form action="{{route('create-enterview')}}" method="post">
                 @csrf
+                <input type="hidden" name="project" value={{ $project_id }}>
                 @foreach($questions as $question)
                 @if($question-> id == 6)
                 <div id="{{$conta++}}">

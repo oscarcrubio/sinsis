@@ -94,19 +94,20 @@ class AdminController extends Controller
             case true:
                 $enterview = new Enterview;
                 $enterview->consultor_id = Auth::user()->id;
-                $enterview->project_id = 1;
+                $enterview->project_id = $request->project;
                 $enterview->save();
-                $questions = array_diff($request->all(), ["C5ICJ7wlCYNLSeRBY0RtBbMeQTuFMqYbHgIwCWis", "Enviar"]);
+                $questions = array_diff($request->all(), [$request->_token, "Enviar", $request->project]);
                 foreach ($questions as $key => $question) {
                     $question_id = array_keys($questions);
                     $enterview->questions()->attach(['question_id' => $question_id[$key - 1]], ['answer' => $question]);
                 };
                 return redirect()->back();
             case false:
+                $project_id = $request->project_id;
                 $projects = Project::getProjects();
                 $questions = Question::where('status', 1)->get();
                 $conta = 1;
-                return view('admin.enterview.create', compact('questions', 'projects', 'conta'));
+                return view('admin.enterview.create', compact('questions', 'projects', 'conta', 'project_id'));
         }
     }
 

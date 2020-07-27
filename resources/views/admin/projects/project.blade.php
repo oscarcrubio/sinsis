@@ -70,18 +70,18 @@
                 <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">                    
                     <div class="col-12 col-lg-12 blog-text p-0">
                         <div class="content margin-20px-bottom md-no-padding-left ">
-                            <a href="blog-standard-post.html" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Entrevistas</a>
-                            @foreach ($project->enterviews as $enterview)                           
-                            <div class="accordion" id="accordionExample-2">
+                            <a href="blog-standard-post.html" class="text-extra-dark-gray margin-30px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Entrevistas</a>
+                            @foreach ($project->enterviews as $key => $enterview)                           
+                            <div class="accordion" id="enterview-project-{{ $project->id }}">
                                 <div class="card">
-                                  <div class="card-header" id="headingOne-2">
+                                  <div class="card-header" id="heading-{{ $enterview->id }}">
                                     <h5 class="mb-0">
-                                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne-2" aria-expanded="true" aria-controls="collapseOne-2">
-                                        {{ $enterview->id }}
+                                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-{{ $enterview->id }}" aria-expanded="true" aria-controls="collapse-{{ $enterview->id }}">
+                                        <span>Entrevista {{ $enterview->id }} | {{ $enterview->created_at }}</span>
                                       </button>
                                     </h5>
                                   </div>                              
-                                  <div id="collapseOne-2" class="collapse" aria-labelledby="headingOne-2" data-parent="#accordionExample-2">                                      
+                                  <div id="collapse-{{ $enterview->id }}" class="collapse" aria-labelledby="heading-{{ $enterview->id }}" data-parent="#enterview-project-{{ $project->id }}">                                      
                                     <div class="card-body">
                                         @if ($enterview->id == 2)                   
                                         @foreach ($enterview->questions as $question)
@@ -94,8 +94,12 @@
                                 </div>                                                                
                               </div>
                             @endforeach
-                        </div>
-                        <a class="btn btn-very-small btn-dark-gray text-uppercase" href="blog-standard-post.html">Continue Reading</a>
+                            <div class="acordion">
+                                <div class="card">                                    
+                                    <a class="btn btn-link" href={{ route('create-enterview',$project->id) }} type="button">+ Crear nueva entrevista</a>
+                                </div>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
                 <!-- end post item -->  

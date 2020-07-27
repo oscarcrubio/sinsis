@@ -51,7 +51,7 @@ Route::group(
             ],
             function () {
                 Route::get('/', array('as' => 'enterview', 'uses' => 'AdminController@indexEnterview'));
-                Route::get('/create', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
+                Route::get('/create/{project_id}', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
                 Route::post('/create', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
             }
         );

@@ -32,7 +32,7 @@
                   <ul class="dropdown-menu second-level">
                       <li class="dropdown">
                           <a href={{ route('create-project') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>
-                      </li>
+                      </li>                      
                       @if (count(@$projects) > 0 )
                       @foreach ($projects as $project)
                         <li class="dropdown">
@@ -92,7 +92,7 @@
                 <a href={{ route('enterview') }} title="Proyectos" data-toggle="dropdown">Entrevistas<i class="fas fa-angle-right pull-right"></i></a>
                   <ul class="dropdown-menu second-level">
                   <li class="dropdown">
-                          <a href={{ route('create-enterview') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>                         
+                          <a href={{ route('create-enterview',1) }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>                         
                       </li>
                       <li class="dropdown">
                           <a href="#" title="Services" data-toggle="dropdown">Services</a>                         
