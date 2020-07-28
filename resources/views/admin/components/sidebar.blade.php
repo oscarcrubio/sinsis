@@ -33,17 +33,7 @@
                       <li class="dropdown">
                           <a href={{ route('create-project') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>
                       </li>                      
-                      @if (count(@$projects) > 0 )
-                      @foreach ($projects as $project)
-                        <li class="dropdown">
-                            <a href={{ route('set-project-view',$project->slug) }} title="Projectos" data-toggle="dropdown">{{ $project->name }}</i></a>                          
-                        </li>
-                      @endforeach
-                      @else
-                      <li class="dropdown">
-                        <a title="Projectos" data-toggle="dropdown">No hay proyectos activos</i></a>                          
-                    </li>
-                      @endif                      
+                                        
                   </ul>
               </li>
 
