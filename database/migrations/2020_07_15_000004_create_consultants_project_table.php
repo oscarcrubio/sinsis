@@ -14,10 +14,10 @@ class CreateConsultantsProjectTable extends Migration
     public function up()
     {
         Schema::create('consultants_project', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('project_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_project');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_project')->references('id')->on('projects');
         });
     }
 
