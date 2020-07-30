@@ -29,11 +29,13 @@ class AdminController extends Controller
                 break;
             case 2:
                 $projects = Project::getProjects();
-                return view('admin.index', compact('projects'));
+                $side_enterprises = Enterprise::getEnterprises();
+                return view('admin.index', compact('projects', 'side_enterprises'));
                 break;
             case 3:
                 $projects = Project::getProjects();
-                return view('admin.index', compact('projects'));
+                $side_enterprises = Enterprise::getEnterprises();
+                return view('admin.index', compact('projects', 'side_enterprises'));
                 break;
         }
     }
@@ -41,8 +43,9 @@ class AdminController extends Controller
     public function indexProject()
     {
         $enterprises  = Enterprise::all();
+        $side_enterprises = Enterprise::getEnterprises();
         $projects = Project::getProjects();
-        return view('admin.projects.index', compact('projects', 'enterprises'));
+        return view('admin.projects.index', compact('projects', 'enterprises', 'side_enterprises'));
     }
 
     public function createProject(Request $request)
@@ -63,7 +66,8 @@ class AdminController extends Controller
                 $projects = Project::getProjects();
                 $managers = User::where('access_level', 1)->get();
                 $enterprises  = Enterprise::all();
-                return view('admin.projects.create', compact('enterprises', 'managers', 'projects'));
+                $side_enterprises = Enterprise::getEnterprises();
+                return view('admin.projects.create', compact('enterprises', 'managers', 'projects', 'side_enterprises'));
         }
     }
 
@@ -72,6 +76,7 @@ class AdminController extends Controller
         $projects = Project::getProjects();
         $project = Project::where('slug', $request->project_name)->first();
         $enterprise = Enterprise::where('id', $project->id_enterprise)->first();
+        $side_enterprises = Enterprise::getEnterprises();
         $enterviews = $project->load('enterviews');
         $users_id = [];
         foreach ($project->users as $user) {
@@ -79,13 +84,14 @@ class AdminController extends Controller
         }
         $users = User::whereNotIn('id', $users_id)
             ->where('access_level', '>=', 2)->get();
-        return view('admin.projects.project', compact('project', 'projects', 'users', 'enterprise', 'enterviews'));
+        return view('admin.projects.project', compact('project', 'projects', 'users', 'enterprise', 'enterviews', 'side_enterprises'));
     }
 
     public function indexEnterview()
     {
+        $side_enterprises = Enterprise::getEnterprises();
         $enterview = ['Entrevista 1', 'Entrevista 2', 'Entrevista 3'];
-        return view('admin/enterview/index', compact('enterview'));
+        return view('admin/enterview/index', compact('enterview', 'side_enterprises'));
     }
 
     public function createEnterview(Request $request)
@@ -103,18 +109,21 @@ class AdminController extends Controller
                 };
                 return redirect()->back();
             case false:
+                $side_enterprises = Enterprise::getEnterprises();
                 $project_id = $request->project_id;
                 $projects = Project::getProjects();
                 $questions = Question::where('status', 1)->get();
                 $conta = 1;
-                return view('admin.enterview.create', compact('questions', 'projects', 'conta', 'project_id'));
+                return view('admin.enterview.create', compact('questions', 'projects', 'conta', 'project_id', 'side_enterprises'));
         }
     }
 
     public function indexUser()
     {
+        $projects = Project::getProjects();
+        $side_enterprises = Enterprise::getEnterprises();
         $users = ['Musitobb', 'Mayeel', 'Jepeeta'];
-        return view('admin/users/index', compact('users'));
+        return view('admin/users/index', compact('users', 'projects', 'side_enterprises'));
     }
 
     public function createUser(Request $request)
@@ -156,7 +165,7 @@ class AdminController extends Controller
 
     public function createDiagnostics()
     {
-        $mytime = date('d-m-y');
+        $mytime = date('d-m-Y');
         return view('admin/diagnostics/create', compact('mytime'));
     }
 

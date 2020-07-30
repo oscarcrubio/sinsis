@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enterprise;
 use Illuminate\Http\Request;
 use App\Project;
 
@@ -10,6 +11,7 @@ class DropzoneController extends Controller
     function createProposals()
     {
         $projects = Project::getProjects();
+        $set_enterprises = Enterprise::getEnterprises();
         return view('admin/proposal/create', compact('projects'));
     }
 
@@ -23,6 +25,6 @@ class DropzoneController extends Controller
         $imageUpload = new Image();
         $imageUpload->filename = $imageName;
         $imageUpload->save();
-        return response()->json(['success'=>$imageName]);
+        return response()->json(['success' => $imageName]);
     }
 }

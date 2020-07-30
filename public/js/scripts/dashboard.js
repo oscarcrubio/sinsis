@@ -1,6 +1,3 @@
-// const loader = $(`#loader`);
-// loader.hide();
-
 $(`input[name ="create-manager-button"]`).on("click", (e) => {
     e.preventDefault();
     let name = $(`input[name ="manager-name"]`).val();
@@ -98,3 +95,29 @@ var fecha = new Date($("#project-date").text());
 var options = { year: "numeric", month: "long", day: "numeric" };
 $("#date-format").text(fecha.toLocaleDateString("es-ES", options));
 //Date project end
+
+$("#users-project").on("change", () => {
+    let user = $(`#users-project option`).filter(`:selected`).val();
+    let token = $(`input[name="_token"]`).val();
+    let project = $(`input[name="project"]`).val();
+    $.ajax({
+        method: `POST`,
+        url: `/admin/project/users`,
+        data: {
+            user: user,
+            project: project,
+            _token: token,
+        },
+        beforeSend: () => {},
+    }).done((response) => {
+        $(`#users-project option`).filter(`:selected`).addClass("d-none");
+        $(`#users-project-managers`)
+            .append(`<li class="media">                          
+        <div class="media-body text-small"><a class="text-extra-dark-gray"><span class="d-block margin-5px-bottom">${response.data.name}</span></a> <span class="d-block text-medium-gray text-small">${response.data.email}</span></div>
+        </li>`);
+        $(`#added-user-project`).removeClass("d-none");
+        setTimeout(() => {
+            $(`#added-user-project`).addClass("d-none");
+        }, 2500);
+    });
+});

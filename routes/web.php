@@ -41,6 +41,7 @@ Route::group(
                 Route::get('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
                 Route::post('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
                 Route::get('/{project_name}', array('as' => 'set-project-view', 'uses' => 'AdminController@setProject'));
+                Route::post('/users', array('as' => 'set-user-project', 'uses' => 'ProjectController@setUser'));
             }
         );
 
@@ -51,7 +52,7 @@ Route::group(
             ],
             function () {
                 Route::get('/', array('as' => 'enterview', 'uses' => 'AdminController@indexEnterview'));
-                Route::get('/create/{project_id}', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
+                Route::get('/create/{project_id}', array('as' => 'create-enterview-project', 'uses' => 'AdminController@createEnterview'));
                 Route::post('/create', array('as' => 'create-enterview', 'uses' => 'AdminController@createEnterview'));
             }
         );
