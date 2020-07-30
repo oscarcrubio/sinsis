@@ -25,7 +25,7 @@ class Project extends Model
     public function users()
     {
         return $this->belongsToMany('App\User', 'consultants_project')
-            ->withPivot('user_id');
+            ->withPivot('id_user');
     }
 
     public function enterviews()

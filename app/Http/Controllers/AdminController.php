@@ -60,7 +60,7 @@ class AdminController extends Controller
                 $project->id_enterprise = $request->project_enterprise;
                 $project->save();
                 $user = User::where('id', Auth::user()->id)->first();
-                $user->projects()->attach(Auth::user()->id, ['project_id' => $project->id]);
+                $user->projects()->attach(Auth::user()->id, ['id_project' => $project->id]);
                 return redirect()->route('set-project-view', $project->slug);
             case false:
                 $projects = Project::getProjects();
