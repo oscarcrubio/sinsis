@@ -11,8 +11,8 @@ class DropzoneController extends Controller
     function createProposals()
     {
         $projects = Project::getProjects();
-        $set_enterprises = Enterprise::getEnterprises();
-        return view('admin/proposal/create', compact('projects'));
+        $side_enterprises = Enterprise::getEnterprises();
+        return view('admin/proposal/create', compact('projects', 'side_enterprises'));
     }
 
 

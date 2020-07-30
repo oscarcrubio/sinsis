@@ -57,7 +57,7 @@ class AdminController extends Controller
                 $project->description = $request->project_description;
                 $project->status = 1;
                 $project->slug = Str::slug($request->project_name);
-                $project->id_enterprise = $request->project_enterprise;
+                $project->enterprise_id = $request->project_enterprise;
                 $project->save();
                 $user = User::where('id', Auth::user()->id)->first();
                 $user->projects()->attach(['id_user' => Auth::user()->id]);
@@ -75,7 +75,7 @@ class AdminController extends Controller
     {
         $projects = Project::getProjects();
         $project = Project::where('slug', $request->project_name)->first();
-        $enterprise = Enterprise::where('id', $project->id_enterprise)->first();
+        $enterprise = Enterprise::where('id', $project->enterprise_id)->first();
         $side_enterprises = Enterprise::getEnterprises();
         $enterviews = $project->load('enterviews');
         $users_id = [];
@@ -188,7 +188,7 @@ class AdminController extends Controller
                 $enterprise->name = $request->name;
                 $enterprise->business_name = $request->business_name;
                 $enterprise->location = $request->location;
-                $enterprise->id_client = $request->manager;
+                $enterprise->client_id = $request->manager;
                 $enterprise->save();
                 $data = [
                     'name' => $enterprise->name,

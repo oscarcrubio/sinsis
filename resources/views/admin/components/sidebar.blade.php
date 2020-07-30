@@ -32,7 +32,12 @@
                   <ul class="dropdown-menu second-level">
                       <li class="dropdown">
                           <a href={{ route('create-project') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>
-                      </li>                      
+                      </li>
+                      @foreach ($projects as $project)
+                        <li class="dropdown">
+                            <a href="#" title="Projectos" data-toggle="dropdown">{{ $project->name }}</i></a>                          
+                        </li>
+                      @endforeach
                                         
                   </ul>
               </li>
