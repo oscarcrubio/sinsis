@@ -15,10 +15,10 @@ class CreateEnterviewsTable extends Migration
     {
         Schema::create('enterviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_consultor');
-            $table->unsignedBigInteger('id_project');
-            $table->foreign('id_consultor')->references('id')->on('users');
-            $table->foreign('id_project')->references('id')->on('projects');
+            $table->unsignedBigInteger('consultor_id');
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('consultor_id')->references('id')->on('users');
+            $table->foreign('project_id')->references('id')->on('projects');
             $table->timestamps();
         });
     }

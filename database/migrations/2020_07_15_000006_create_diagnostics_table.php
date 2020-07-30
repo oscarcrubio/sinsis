@@ -15,10 +15,10 @@ class CreateDiagnosticsTable extends Migration
     {
         Schema::create('diagnostics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_project');
-            $table->foreign('id_project')->references('id')->on('projects');
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects');
             $table->text('description');
-            $table->string('pdf_file',190);
+            $table->string('pdf_file', 190);
             $table->timestamps();
         });
     }
