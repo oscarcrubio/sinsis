@@ -14,8 +14,8 @@ class AddForeingKeysProject extends Migration
     public function up()
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_enterprise')->nullable();
-            $table->foreign('id_enterprise')->references('id')->on('enterprises');
+            $table->unsignedBigInteger('enterprise_id')->nullable();
+            $table->foreign('enterprise_id')->references('id')->on('enterprises');
         });
     }
 

@@ -60,7 +60,7 @@ class AdminController extends Controller
                 $project->id_enterprise = $request->project_enterprise;
                 $project->save();
                 $user = User::where('id', Auth::user()->id)->first();
-                $user->projects()->attach(Auth::user()->id, ['id_project' => $project->id]);
+                $user->projects()->attach(['id_user' => Auth::user()->id]);
                 return redirect()->route('set-project-view', $project->slug);
             case false:
                 $projects = Project::getProjects();
@@ -100,7 +100,7 @@ class AdminController extends Controller
             case true:
                 $enterview = new Enterview;
                 $enterview->consultor_id = Auth::user()->id;
-                $enterview->project_id = $request->project;
+                $enterview->id_project = $request->project;
                 $enterview->save();
                 $questions = array_diff($request->all(), [$request->_token, "Enviar", $request->project]);
                 foreach ($questions as $key => $question) {

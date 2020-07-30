@@ -15,10 +15,10 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_project');
-            $table->foreign('id_project')->references('id')->on('projects');
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects');
             //$table->foreign('id_approach_files')->references('id')->on('approaches');
-            $table->text('description');            
+            $table->text('description');
             $table->timestamps();
         });
     }
