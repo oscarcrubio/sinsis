@@ -35,7 +35,7 @@
                       </li>
                       @foreach ($projects as $project)
                         <li class="dropdown">
-                            <a href="#" title="Projectos" data-toggle="dropdown">{{ $project->name }}</i></a>                          
+                            <a href="{{ route('set-project-view',$project->slug) }}" title="Projectos" data-toggle="dropdown">{{ $project->name }}</i></a>                          
                         </li>
                       @endforeach
                                         
