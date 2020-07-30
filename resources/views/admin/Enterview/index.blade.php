@@ -2,7 +2,9 @@
 @section('title', 'Crear Proyecto | Panel de Administación SinSis')
 @section('body')
 <!-- start list style 05 section -->
-
+<div id="contenedor_carga">
+    <div id="carga"></div>
+</div>
 <section class="enterview wow fadeIn bg-extra-dark-gray">
             <div class="container">
                 <div class="row justify-content-center">
@@ -30,4 +32,11 @@
                 </div>
             </div>
         </section>
+        <script>
+            window.onload = function(){
+                var contenedor = document.getElementById('contenedor_carga');
+                contenedor.style.visibility = 'hidden';
+                contenedor.style.opacity = '0';
+            }
+        </script>
         <!-- end list style 05 section -->

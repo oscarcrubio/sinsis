@@ -2,6 +2,9 @@
 @section('title', Auth::user()->name.' | Panel de Administación SinSis')
 @section('body')
   <!-- start overline icon section -->
+  <div id="contenedor_carga">
+      <div id="carga"></div>
+  </div>
   <section class="wow big-section fadeIn">
             <div class="container">
                 <div class="row justify-content-center">
