@@ -19,29 +19,29 @@
                             <div class="padding-55px-all bg-very-light-gray md-padding-30px-all sm-pading-40px-all">
                                 <!-- start pricing title -->
                                 <div class="pricing-title text-center">
-                                    <i class="ti-user icon-large text-deep-pink d-inline-block padding-30px-all bg-white box-shadow-light rounded-circle margin-25px-bottom"></i>
+                                    <i class="ti-briefcase icon-large text-deep-pink d-inline-block padding-30px-all bg-white box-shadow-light rounded-circle margin-25px-bottom"></i>
                                 </div>
                                 <!-- end pricing title -->
                                 <!-- start pricing price -->
                                 <div class="pricing-price">
-                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">Standard</span>
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 mb-0">$250</h4>
-                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">Per Month</div>
+                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">proyecto:</span>
+                                    <h4 class="text-extra-dark-gray alt-font font-weight-600 mb-0">{{ $project->name }}</h4>
+                                    <!-- <div class="text-extra-small text-uppercase alt-font margin-5px-top">Per Month</div> -->
                                 </div>
                                 <!-- end pricing price -->
                             </div>
                             <!-- start pricing features -->
                             <div class="padding-45px-all pricing-features md-padding-20px-all sm-padding-30px-all">
                                 <ul class="list-style-11">
-                                    <li>1 GB Photos</li>
-                                    <li>Secure Online Transfer</li>
-                                    <li>Unlimited Styles</li>
+                                    <li>Entrevistas: {{ count($project->enterviews) }}</li>
+                                    <strong><li>{{ $project->description }}</li></strong>
+                                    <!-- <li>Unlimited Styles</li>
                                     <li>Customer Service</li>
-                                    <li>Manual Backup</li>
+                                    <li>Manual Backup</li> -->
                                 </ul>
                                 <!-- start pricing action -->
                                 <div class="pricing-action margin-35px-top md-no-margin-top">
-                                    <a href="#" class="btn btn-dark-gray btn-small text-extra-small">Choose Plan</a>                                        
+                                    <a href="{{ route('set-project-view',$project->slug) }}" class="btn btn-dark-gray btn-small text-extra-small">Proyecto</a>                                        
                                 </div>
                                 <!-- end pricing action -->
                             </div>
