@@ -43,12 +43,13 @@ class AdminController extends Controller
         }
     }
 
-    public function indexProject()
+    public function indexProject(Request $request)
     {
         $enterprises  = Enterprise::all();
         $side_enterprises = Enterprise::getEnterprises();
         $projects = Project::getProjects();
-        return view('admin.projects.index', compact('projects', 'enterprises', 'side_enterprises'));
+        $project = Project::where('slug', $request->project_name)->first();
+        return view('admin.projects.index', compact('projects', 'enterprises', 'side_enterprises', 'project'));
     }
 
     public function createProject(Request $request)
