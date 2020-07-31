@@ -10,4 +10,9 @@ class Proposal extends Model
     {
         $this->belongsTo('App\Project');
     }
+
+    public function files()
+    {
+        return $this->hasMany('App\File');
+    }
 }

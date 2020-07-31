@@ -121,3 +121,32 @@ $("#users-project").on("change", () => {
         }, 2500);
     });
 });
+
+// "myAwesomeDropzone" is the camelized version of the HTML element's ID
+Dropzone.options.dropzoneForm = {
+    autoProcessQueue: false,
+    acceptedFiles: ".jpg, .png, .pdf, .gif, .text, .doc, .docx, .jpeg",
+    parallelUploads: 100,
+    addRemoveLinks: true,
+    init: function () {
+        var myDropzone = this;
+
+        // Update selector to match your button
+        $("#button").click(function (e) {
+            e.preventDefault();
+            let description = $.trim($("#proposal-description").val());
+            let project = $(`input[name="project-id"]`).val();
+            let token = $(`input[name="_token"]`).val();
+            $.ajax({
+                method: `POST`,
+                url: `/admin/proposals/create`,
+                data: {
+                    project: project,
+                    description: description,
+                    _token: token,
+                },
+            }),
+                myDropzone.processQueue();
+        });
+    },
+};

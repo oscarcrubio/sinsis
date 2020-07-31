@@ -95,8 +95,9 @@ Route::group(
             ],
             function () {
                 Route::get('/', array('as' => 'proposals', 'uses' => 'AdminController@indexProposals'));
-                Route::get('create', array('as' => 'create-proposals', 'uses' => 'DropzoneController@createProposals'));
-                Route::post('create/upload', array('as' => 'create.upload', 'uses' => 'DropzoneController@upload'));
+                Route::get('create/{project_id}', array('as' => 'create-proposals', 'uses' => 'DropzoneController@createProposals'));
+                Route::post('create/upload', array('as' => 'create-upload', 'uses' => 'DropzoneController@upload'));
+                Route::post('create', array('as' => 'proposal-create', 'uses' => 'DropzoneController@create'));
             }
         );
     }

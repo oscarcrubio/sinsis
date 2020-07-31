@@ -12,7 +12,7 @@ class ProjectController extends Controller
         $user_id = $request->user;
         $project_id = $request->project;
         $user = User::where('id', $user_id)->first();
-        $user->projects()->attach($user_id, ['id_project' => $project_id]);
+        $user->projects()->attach($user_id, ['project_id' => $project_id]);
         $data = [
             'name' => $user->name,
             'email' => $user->email,

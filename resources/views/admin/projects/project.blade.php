@@ -146,7 +146,7 @@
                             <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="blog-grid.html" class="text-medium-gray">Willie Clark</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>17 july 2017</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="blog-grid.html" class="text-medium-gray">Branding</a></div>
                             <p class="m-0 width-95">Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the industry industry’s standard dummy text Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                         </div>
-                        <a class="btn btn-very-small btn-dark-gray text-uppercase" href="blog-slider-post.html">Continue Reading</a>
+                        <a class="btn btn-very-small btn-dark-gray text-uppercase" href={{ route('create-proposals',$project->id) }}>Crear Propuesta</a>
                     </div>
                 </div>
                 <!-- end post item --> 
