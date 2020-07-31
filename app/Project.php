@@ -35,7 +35,7 @@ class Project extends Model
 
     public function proposals()
     {
-        return $this->hasMany('App\Proposals');
+        return $this->hasMany('App\Proposal');
     }
 
     public function diagnostic()

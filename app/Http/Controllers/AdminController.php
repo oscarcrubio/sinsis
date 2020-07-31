@@ -25,7 +25,10 @@ class AdminController extends Controller
     {
         switch (Auth::user()->access_level) {
             case 1:
-                dd('acces 1');
+               // $users  = User::where('status', 1)->get();
+                $enterprise = Enterprise::where('client_id', Auth::user()->id)->first();
+                //dd($enterprise->projects);
+                return view('clients', compact('enterprise'));
                 break;
             case 2:
                 $projects = Project::getProjects();
