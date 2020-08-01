@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Mail\UserPassword;
 use App\Project;
 use App\Enterprise;
+use App\Diagnostic;
 use App\User;
 use App\Enterview;
 use App\Question;
@@ -167,10 +168,24 @@ class AdminController extends Controller
         return view('admin/diagnostics/index', compact('diagnostics'));
     }
 
-    public function createDiagnostics()
+    public function createDiagnostics(Request $request)
     {
         $mytime = date('d-m-Y');
-        return view('admin/diagnostics/create', compact('mytime'));
+        $project= $request->project_id; 
+        $side_enterprises = Enterprise::getEnterprises();
+        $projects = Project::getProjects();
+        return view('admin/diagnostics/create', compact('mytime','side_enterprises','projects','project'));
+        
+    }
+    public function storeDiagnostics(Request $request)
+    {
+        $diagnostico = new Diagnostic;
+        $diagnostico->project_id = $request->project_id;
+        $diagnostico->pdf_file =  $request->file('file')->store('Diagnosticos');
+        $diagnostico->description= $request->texto;
+        $diagnostico->save();
+
+        return redirect()->back();
     }
 
     public function indexProposals()

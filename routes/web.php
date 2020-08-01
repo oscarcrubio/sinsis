@@ -74,7 +74,8 @@ Route::group(
             ],
             function () {
                 Route::get('/', array('as' => 'diagnostics', 'uses' => 'AdminController@indexDiagnostics'));
-                Route::get('/create', array('as' => 'create-diagnostics', 'uses' => 'AdminController@createDiagnostics'));
+                Route::get('/create/{project_id}', array('as' => 'create-diagnostics', 'uses' => 'AdminController@createDiagnostics'));
+                Route::post('store', array('as' => 'store-diagnostics', 'uses' => 'AdminController@storeDiagnostics'));
             }
         );
 

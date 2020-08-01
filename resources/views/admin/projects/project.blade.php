@@ -62,7 +62,7 @@
                 <div class="margin-45px-bottom sm-margin-25px-bottom">
                     <div class="text-extra-dark-gray margin-25px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Empresa</span></div>
                     <ul class="list-style-6 margin-20px-bottom text-small">
-                        <li><a href="blog-grid.html">{{ $enterprise->name }}</a></li>                        
+                        <li><a href="blog-grid.html"></a></li>                        
                     </ul>   
                 </div>
             </aside>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="acordion col-12">
                         <div class="card">                                    
-                            <a class="btn btn-link" href={{ route('create-enterview',$project->id) }} type="button">+ atualizar diagnostico</a>
+                            <a class="btn btn-link" href={{ route('create-diagnostics',$project->id) }} type="button">+ atualizar diagnostico</a>
                         </div>
                     </div>
                 </div>
