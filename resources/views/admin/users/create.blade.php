@@ -8,22 +8,22 @@
     <div class="container projects-container">        
         <div class="row">
             <div class="col-12 wow fadeIn">
-                <form action="" method="post">
+                <form action="{{ route('create-user')}}" method="post" >
+                @csrf
                     <label for="">Nombre</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="name" id="">
                     <label for="">Correo electronico</label>
-                    <input type="text" name="" id="">
-                    <label for="">Contraseña</label>
-                    <input type="password" name="" id="">
+                    <input type="email" name="email" id="">
                     <label for="">Nivel de acceso</label>
-                    <input type="text" name="" id="">
+                    <select name="accslvl">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
                     <label for="">Cargo</label>
-                    <input type="text" name="" id="">
-                    <!--<label for="">Descripcion:</label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>-->
-                    <!--<label for="">Empresa</label>-->
+                    <input type="text" name="charge" id="">
+                    <input type="submit" name="button_1" value="Enviar">
                 </form>
-                <input type="submit" name="button_1" value="Enviar">
             </div>
         </div>
     </div>
