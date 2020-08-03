@@ -105,7 +105,7 @@ class AdminController extends Controller
             case true:
                 $enterview = new Enterview;
                 $enterview->consultor_id = Auth::user()->id;
-                $enterview->id_project = $request->project;
+                $enterview->project_id = $request->project;
                 $enterview->save();
                 $questions = array_diff($request->all(), [$request->_token, "Enviar", $request->project]);
                 foreach ($questions as $key => $question) {
@@ -188,10 +188,13 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function indexProposals()
-    {
-        $proposals = ['propuesta 1', 'propuesta 2', 'propuesta 3'];
-        return view('admin/proposal/index', compact('proposals'));
+    public function indexProposals(Request $request)
+    {           
+        $project = Project::where('slug',$request->project_name)->first();
+        $side_enterprises = Enterprise::getEnterprises();
+        $projects = Project::getProjects();
+        $proposals = $project->proposals;
+        return view('admin/proposal/index', compact('proposals','project','projects','side_enterprises'));
     }
 
     public function indexEnterprise()

@@ -32,6 +32,7 @@ Route::group(
     ],
     function () {
         Route::get('/', array('as' => 'admin', 'uses' => 'AdminController@dashboard'));
+        Route::get('create-zip/{project_id}', array('as' => 'create-zip', 'uses' => 'CreateZipController@index'));
         Route::group(
             [
                 'prefix' => 'project'
@@ -42,6 +43,7 @@ Route::group(
                 Route::post('/create', array('as' => 'create-project', 'uses' => 'AdminController@createProject'));
                 Route::get('/{project_name}', array('as' => 'set-project-view', 'uses' => 'AdminController@setProject'));
                 Route::post('/users', array('as' => 'set-user-project', 'uses' => 'ProjectController@setUser'));
+                Route::get('/{project_name}/proposals', array('as' => 'proposals', 'uses' => 'AdminController@indexProposals'));
             }
         );
 
@@ -73,7 +75,7 @@ Route::group(
                 'prefix' => 'diagnostics'
             ],
             function () {
-                Route::get('/', array('as' => 'diagnostics', 'uses' => 'AdminController@indexDiagnostics'));
+                Route::get('/{proyect_id}/diagnostics', array('as' => 'diagnostics', 'uses' => 'AdminController@indexDiagnostics'));
                 Route::get('/create/{project_id}', array('as' => 'create-diagnostics', 'uses' => 'AdminController@createDiagnostics'));
                 Route::post('store', array('as' => 'store-diagnostics', 'uses' => 'AdminController@storeDiagnostics'));
             }
@@ -94,8 +96,7 @@ Route::group(
             [
                 'prefix' => 'proposals'
             ],
-            function () {
-                Route::get('/', array('as' => 'proposals', 'uses' => 'AdminController@indexProposals'));
+            function () {               
                 Route::get('create/{project_id}', array('as' => 'create-proposals', 'uses' => 'DropzoneController@createProposals'));
                 Route::post('create/upload', array('as' => 'create-upload', 'uses' => 'DropzoneController@upload'));
                 Route::post('create', array('as' => 'proposal-create', 'uses' => 'DropzoneController@create'));

@@ -30,16 +30,16 @@ class Project extends Model
 
     public function enterviews()
     {
-        return $this->hasMany('App\Enterview');
+        return $this->hasMany('App\Enterview')->latest();
     }
 
     public function proposals()
     {
-        return $this->hasMany('App\Proposal');
+        return $this->hasMany('App\Proposal')->latest();
     }
 
-    public function diagnostic()
+    public function diagnostics()
     {
-        return $this->hasOne('App\Diagnostic');
+        return $this->hasMany('App\Diagnostic')->latest();
     }
 }

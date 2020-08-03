@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('title', $project->name.' | Panel de Administación SinSis')
 @section('body')
-<section class="wow fadeIn parallax" data-stellar-background-ratio="0.5" style="background-image:url('http://placehold.it/1920x1100');">
+<section class="wow fadeIn parallax" data-stellar-background-ratio="0.5" style="background-image:url({{ asset('images/bg-projects.jpg') }});">
     @include('components.alerts')
     <div class="opacity-medium bg-extra-dark-gray"></div>
     <div class="container">
@@ -68,7 +68,7 @@
             </aside>
             <main class="col-12 col-lg-9 right-sidebar md-margin-60px-bottom sm-margin-40px-bottom md-padding-15px-lr">
                 <!-- start post item -->
-                <span>Ultima modificación: {{ date_format($project->updated_at, 'g:ia')}} - </span> <span  id="project-date" class="d-none">{{ date_format($project->updated_at, 'l d F Y')}}</span>
+                <span>Creado: {{ date_format($project->updated_at, 'g:ia')}} - </span> <span  id="project-date" class="d-none">{{ date_format($project->updated_at, 'l d F Y')}}</span>
                 <span id="date-format"></span>
                 <hr>
                 <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">                    
@@ -116,37 +116,76 @@
                 </div>
                 <!-- end post item -->  
                 <!-- start post item -->
-                <a class="text-extra-dark-gray margin-30px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Diagnostico</a>
+                <div class="d-flex justify-content-between">
+                    <a class="text-extra-dark-gray margin-30px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Diagnostico</a> <a href="" class="ml-5">Ver todo</a>
+                    </div>
                 <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">
+                    @if (@$project->diagnostics)
+                    @php
+                        $diagnostic = $project->diagnostics[0];
+                    @endphp
                     <div class="col-12 col-lg-4 blog-image no-padding md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right text-center">                        
-                        <a href="blog-gallery-post.html"><img src={{ asset('images/icons/pdf_icon.webp') }} alt="" style="width: 100px;" title="Descargar"></a>
+                        <a href={{ 'storage/app/Diagnosticos/'.$diagnostic->pdf_file }} download><img src={{ asset('images/icons/pdf_icon.webp') }} alt="" style="width: 100px;" title="Descargar"></a>
                     </div>
                     <div class="col-12 col-lg-6 blog-text p-0">
                         <div class="content margin-20px-bottom md-no-padding-left ">
-                            <a href="blog-gallery-post.html" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">The world’s business leaders</a>
-                            <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="blog-grid.html" class="text-medium-gray">Jennifer Smith</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>17 july 2017</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="blog-grid.html" class="text-medium-gray">Branding</a></div>
-                            <p class="m-0 width-95">Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the industry industry’s standard dummy text Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="blog-gallery-post.html" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Diagnostico numero {{ count($project->diagnostics) }}</a>
+                            <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>Creado el: {{ date_format($diagnostic->created_at,  'd-m-Y')}} </span></div>
+                            <p class="m-0 width-95">{{ $diagnostic->description }}</p>
                         </div>
                     </div>
+                    @else
+                    <div class="acordion col-12">
+                        <div class="card">
+                          <div class="card-header">
+                              Aun no diagnosticos
+                          </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="acordion col-12">
                         <div class="card">                                    
-                            <a class="btn btn-link" href={{ route('create-diagnostics',$project->id) }} type="button">+ atualizar diagnostico</a>
+                            <a class="btn btn-link" href={{ route('create-diagnostics',$project->id) }} type="button">
+                            {{ isset($project->diagnostic) ? '+ atualizar diagnostico' : '+ crear diagnostico' }}
+                            </a>
                         </div>
                     </div>
                 </div>
                 <!-- end post item -->  
                 <!-- start post item -->
+                <div class="d-flex justify-content-between">
+                <a class="text-extra-dark-gray margin-30px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Propuestas</a> <a href={{ route('proposals',$project->slug) }} class="ml-5">Ver todo</a>
+                </div>
                 <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">
-                    <div class="col-12 col-lg-5 blog-image p-0 md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right">
-                        <a href="blog-slider-post.html"><img src="http://placehold.it/1200x840" alt=""></a>
+                    @if (@$project->proposals)
+                    <div class="col-12 col-lg-4 blog-image no-padding md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right text-center">                        
+                        <a href={{ route('create-zip',[$project->id,'download'=>'true']) }}><img src={{ asset('images/icons/zip_icon.png') }} alt="" style="width: 100px;" title="Descargar"></a>
                     </div>
                     <div class="col-12 col-lg-6 blog-text p-0">
                         <div class="content margin-20px-bottom md-no-padding-left ">
-                            <a href="blog-slider-post.html" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">You are what you are seen to be</a>
-                            <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="blog-grid.html" class="text-medium-gray">Willie Clark</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>17 july 2017</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="blog-grid.html" class="text-medium-gray">Branding</a></div>
-                            <p class="m-0 width-95">Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the industry industry’s standard dummy text Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            @php
+                                $proposal = $project->proposals[0];
+                            @endphp
+                            <a class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Propuesta numero {{ count($project->proposals) }}</a>
+                            <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>Creado el: {{ date_format($proposal->created_at,  'd-m-Y')}}</span></div>
+                            <p class="m-0 width-95">{{ $proposal->description }}</p>
                         </div>
-                        <a class="btn btn-very-small btn-dark-gray text-uppercase" href={{ route('create-proposals',$project->id) }}>Crear Propuesta</a>
+                    </div>
+                    @else
+                    <div class="acordion col-12">
+                        <div class="card">
+                          <div class="card-header">
+                              Aun no hay propuestas
+                          </div>
+                        </div>
+                    </div>
+                    @endif
+                    <div class="acordion col-12">
+                        <div class="card">                                    
+                            <a class="btn btn-link" href={{ route('create-proposals',$project->id) }} type="button">
+                            {{ isset($project->proposals) ? '+ atualizar propuesta' : '+ crear propuesta' }}
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- end post item --> 
