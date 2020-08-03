@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{ $proposal->description }}</td>
                     <td>{{ 'Files '.$project->name.'.zip'}}&nbsp;&nbsp;<strong>{{ '('.count($proposal->files).') Archivos' }}</strong></td>
-                    <td><a title="Descargar" href="" class="btn text-center btn-primary rounded"><i class="fas fa-download"></i></a>&nbsp;<a title="Eliminar" href="" class="btn text-center btn-danger rounded"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a title="Descargar" href="{{ route('create-zip-proposal',[$project->id,$proposal->id,'download'=>'true']) }}" class="btn text-center btn-primary rounded"><i class="fas fa-download"></i></a>&nbsp;<a title="Eliminar" href="" class="btn text-center btn-danger rounded"><i class="fas fa-trash-alt"></i></a></td>
                     <td class="text-center">{{ date_format($proposal->created_at,'d-m-Y') }}</td>
                 </tr>
                 <!-- end features box item -->

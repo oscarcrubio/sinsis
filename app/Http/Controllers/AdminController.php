@@ -170,10 +170,13 @@ class AdminController extends Controller
         }
     }
 
-    public function indexDiagnostics()
+    public function indexDiagnostics(Request $request)
     {
-        $diagnostics = ['diagnostico 1', 'diagnostico 2', 'diagnostico 3'];
-        return view('admin/diagnostics/index', compact('diagnostics'));
+        $project = Project::where('slug',$request->project_name)->first();
+        $side_enterprises = Enterprise::getEnterprises();
+        $projects = Project::getProjects();
+        $diagnostics = $project->diagnostics;
+        return view('admin/diagnostics/index', compact('diagnostics','project','projects','side_enterprises'));
     }
 
     public function createDiagnostics(Request $request)

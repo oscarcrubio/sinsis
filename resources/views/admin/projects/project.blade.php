@@ -55,8 +55,8 @@
                     <div class="text-extra-dark-gray margin-20px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Contenido</span></div>
                     <ul class="list-style-6 margin-50px-bottom text-small">
                         <li><a href="blog-masonry.html">Entrevistas</a><span>{{ count($project->enterviews) }}</span></li>
-                        <li><a href="blog-masonry.html">Diagnosticos</a><span>05</span></li>
-                        <li><a href="blog-masonry.html">Propuestas</a><span>08</span></li>                       
+                        <li><a href="blog-masonry.html">Diagnosticos</a><span>{{ count($project->diagnostics) }}</span></li>
+                        <li><a href="blog-masonry.html">Propuestas</a><span>{{ count($project->proposals) }}</span></li>                       
                     </ul>   
                 </div>                                              
                 <div class="margin-45px-bottom sm-margin-25px-bottom">
@@ -105,19 +105,21 @@
                                     </div>
                                   </div>
                               </div>
-                            @endforelse                            
+                            @endforelse
+                            @if ($project->status == 1)
                             <div class="acordion">
                                 <div class="card">                                    
                                     <a class="btn btn-link" href={{ route('create-enterview-project',$project->id) }} type="button">+ Crear nueva entrevista</a>
                                 </div>
                             </div>
+                            @endif                            
                         </div>                        
                     </div>
                 </div>
                 <!-- end post item -->  
                 <!-- start post item -->
                 <div class="d-flex justify-content-between">
-                    <a class="text-extra-dark-gray margin-30px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Diagnostico</a> <a href="" class="ml-5">Ver todo</a>
+                    <a class="text-extra-dark-gray margin-30px-bottom alt-font text-extra-large font-weight-600 d-inline-block">Diagnostico</a> <a href={{ route('diagnostics',$project->slug) }} class="ml-5">Ver todo</a>
                     </div>
                 <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-left md-no-border">
                     @if (@$project->diagnostics)
@@ -143,6 +145,7 @@
                         </div>
                     </div>
                     @endif
+                    @if ($project->status == 1)
                     <div class="acordion col-12">
                         <div class="card">                                    
                             <a class="btn btn-link" href={{ route('create-diagnostics',$project->id) }} type="button">
@@ -150,6 +153,7 @@
                             </a>
                         </div>
                     </div>
+                    @endif                    
                 </div>
                 <!-- end post item -->  
                 <!-- start post item -->
@@ -180,6 +184,7 @@
                         </div>
                     </div>
                     @endif
+                    @if ($project->status == 1)
                     <div class="acordion col-12">
                         <div class="card">                                    
                             <a class="btn btn-link" href={{ route('create-proposals',$project->id) }} type="button">
@@ -187,6 +192,7 @@
                             </a>
                         </div>
                     </div>
+                    @endif
                 </div>
                 <!-- end post item --> 
             </main>            
