@@ -179,13 +179,20 @@ class AdminController extends Controller
     }
     public function storeDiagnostics(Request $request)
     {
-        $diagnostico = new Diagnostic;
-        $diagnostico->project_id = $request->project_id;
-        $diagnostico->pdf_file =  $request->file('file')->store('public');
-        $diagnostico->description= $request->texto;
-        $diagnostico->save();
+        $extension = $request->file('file')->extension();
+        
+        if($extension == "pdf" || $extension=="PDF"){
 
+            $diagnostico = new Diagnostic;
+            $diagnostico->project_id = $request->project_id;
+            $diagnostico->pdf_file =  $request->file('file')->store('public');
+            $diagnostico->description= $request->texto;
+            $diagnostico->save();
+
+            return redirect()->back();
+        }
         return redirect()->back();
+        
     }
 
     public function indexProposals()
