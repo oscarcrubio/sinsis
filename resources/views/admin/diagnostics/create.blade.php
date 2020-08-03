@@ -14,7 +14,7 @@
                     <label for="">Descripcion</label>
                     <textarea name="texto" id="" cols="30" rows="10"></textarea>
                     <label for="">PDF</label>
-                    <input type="file" name="file" id="">
+                    <input type="file" name="file" id="" accept=".pdf,.PDF">
                     <input type="hidden" name="project_id" value={{$project}}>
                     <input type="submit" name="button_1" value="Enviar">
                 </form>
