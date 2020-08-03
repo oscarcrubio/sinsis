@@ -51,7 +51,7 @@
                 </ul>
             </li>
               <li class="dropdown">
-                  <a data-toggle="dropdown" href="#" title="Empresas">Empresas <i class="fas fa-angle-right"></i></a>
+                  <a data-toggle="dropdown" href={{ route('enterprise') }} title="Empresas">Empresas <i class="fas fa-angle-right"></i></a>
                   <ul class="dropdown-menu second-level">
                     <li class="dropdown">
                         <a href="#" title="About" data-toggle="dropdown">Nuevo</a>

@@ -123,7 +123,7 @@ class AdminController extends Controller
         }
     }
 
-    public function indexUser()
+    public function indexUser(Request $request)
     {
         $projects = Project::getProjects();
         $side_enterprises = Enterprise::getEnterprises();
@@ -139,8 +139,14 @@ class AdminController extends Controller
                 $user = new User;
                 $user->name = $request->name;
                 $user->email = $request->email;
-                $user->password = bcrypt($pass);
-                $user->access_level = 1;
+                $user->access_level = $request->accslvl;
+                if ($request->accslvl == 1){
+                    $user->password = bcrypt($pass);
+                }
+                else{
+                    $user->password = bcrypt('Lomecan123');
+                    
+                }
                 $user->charge = $request->charge;
                 $user->save();
                 $data = [
@@ -157,7 +163,9 @@ class AdminController extends Controller
                 break;
                 // dd($user->password);
             case false:
-                return view('admin/users/create');
+                $projects = Project::getProjects();
+                $side_enterprises = Enterprise::getEnterprises();
+                return view('admin/users/create', compact('projects', 'side_enterprises'));
                 break;
         }
     }
@@ -199,7 +207,10 @@ class AdminController extends Controller
 
     public function indexEnterprise()
     {
-        return view('enterprises.index');
+        $projects = Project::getProjects();
+        $side_enterprises = Enterprise::getEnterprises();
+        $enterprises = ['empresa 1', 'empresa 2', 'empresa 3'];
+        return view('admin/enterprises/index', compact('enterprises', 'projects', 'side_enterprises'));
     }
 
     public function createEnterprise(Request $request)
@@ -219,8 +230,11 @@ class AdminController extends Controller
                 return response()->json(array('success' => true, 'data' => $data), 200);
                 break;
             case false:
-                return view('admin.enterprises.create');
+                $projects = Project::getProjects();
+                $side_enterprises = Enterprise::getEnterprises();
+                return view('admin.enterprises.create', compact('projects', 'side_enterprises'));
                 break;
         }
     }
+    
 }
