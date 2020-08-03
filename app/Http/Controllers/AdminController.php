@@ -189,7 +189,7 @@ class AdminController extends Controller
     {
         $diagnostico = new Diagnostic;
         $diagnostico->project_id = $request->project_id;
-        $diagnostico->pdf_file =  $request->file('file')->store('Diagnosticos');
+        $diagnostico->pdf_file =  $request->file('file')->store('public');
         $diagnostico->description= $request->texto;
         $diagnostico->save();
 
