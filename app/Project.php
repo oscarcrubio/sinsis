@@ -10,7 +10,7 @@ use App\Proposal;
 
 class Project extends Model
 {
-    //
+    protected $fillable = ['status'];
 
     static public function getProjects()
     {
@@ -31,6 +31,11 @@ class Project extends Model
     public function enterviews()
     {
         return $this->hasMany('App\Enterview')->latest();
+    }
+
+    public function enterprises()
+    {
+        return $this->belongsTo('App\Enterprise');
     }
 
     public function proposals()

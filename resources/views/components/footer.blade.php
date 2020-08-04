@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 widget border-right border-color-extra-light-gray md-no-border-right md-margin-30px-bottom text-center text-md-left">
                     <!-- start logo -->
-                    <a href="index.html" class="margin-20px-bottom d-inline-block"><img class="footer-logo" src="images/logo.png" data-rjs="images/logo@2x.png" alt="Pofo"></a>
+                    <a href="index.html" class="margin-20px-bottom d-inline-block"><img class="footer-logo" src={{ asset('images/logos/logo-sinsis.png') }}  alt="Pofo"></a>
                     <!-- end logo -->
                     <p class="text-small width-95 sm-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     <!-- start social media -->
@@ -51,15 +51,7 @@
                     <div class="text-small">Phone: +44 (0) 123 456 7890</div>
                     <a href="contact-us-modern.html" class="text-small text-uppercase text-decoration-underline">View Direction</a>
                 </div>
-                <!-- end contact information -->
-                <!-- start instagram -->
-                <div class="col-lg-3 col-md-6 widget padding-45px-left md-padding-15px-left text-center text-md-left">
-                    <div class="widget-title alt-font text-small text-extra-dark-gray text-uppercase margin-20px-bottom font-weight-600">Resent portfolio</div>
-                    <div class="instagram-follow-api">
-                        <ul id="instaFeed-footer"></ul>
-                    </div>
-                </div>
-                <!-- end instagram -->
+                <!-- end contact information -->                
             </div>
         </div>
     </div>

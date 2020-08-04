@@ -26,7 +26,11 @@ class CreateZipController extends Controller
             $zip = new ZipArchive;
             if ($zip->open($public_dir . '/' . $zipFileName, ZipArchive::CREATE) === TRUE) {                
                 // Add File in ZipArchive
-                $proposal = Proposal::where('project_id',$request->project_id)->latest('id')->first();                
+                if(isset($request->proposal_id)){
+                    $proposal = Proposal::where('id',$request->proposal_id)->first();
+                }else{
+                    $proposal = Proposal::where('project_id',$request->project_id)->latest('id')->first();
+                }
                 foreach($proposal->files as $file){
                     $zip->addFile('uploads/'.$file->name);  
                 }                                   

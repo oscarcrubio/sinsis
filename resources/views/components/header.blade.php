@@ -17,8 +17,8 @@
                 <div class="container nav-header-container">
                     <!-- start logo -->
                     <div class="col-auto pl-lg-0">
-                        <a href="index.html" title="SinSis" class="logo logo-main-index"><img src={{ asset('images/logos/logo-sinsis.png') }} data-rjs="images/logo@2x.png" class="logo-dark default" alt="SinSis"><img src="images/logo-white.png" data-rjs="images/logo-white@2x.png" alt="SinSis" class="logo-light"></a>
-                        <a href="index.html" title="SinSis" class="logo display-none logo-mini-index"><img src={{ asset('images/logos/logo-sinsis-mini.png') }} data-rjs="images/logo@2x.png" class="logo-dark default" alt="SinSis"><img src="images/logo-white.png" data-rjs="images/logo-white@2x.png" alt="SinSis" class="logo-light"></a>
+                        <a href="index.html" title="SinSis" class="logo logo-main-index"><img src={{ asset('images/logos/logo-sinsis.png') }} class="logo-dark default" alt="SinSis"><img  alt="SinSis" class="logo-light"></a>
+                        <a href="index.html" title="SinSis" class="logo display-none logo-mini-index"><img src={{ asset('images/logos/logo-sinsis-mini.png') }} class="logo-dark default" alt="SinSis"><img  alt="SinSis" class="logo-light"></a>
                     </div>
                     <!-- end logo -->
                     <div class="col accordion-menu pr-0 pr-md-3">
@@ -42,10 +42,25 @@
                                     <a href={{ route('contact') }}>Contacto</a><i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>                                                                        
                                 </li>
                                 @if (Auth::check() == true)
-                                <div class="login p-2">
-                                    <i class="far fa-user login" title="{{ Auth::user()->name }}"></i>
-                                    <i class="fas fa-angle-down"></i>    
-                                </div>                                    
+                                {{-- <li class="login p-2">                                    
+                                </li> --}}
+                                <li class="dropdown simple-dropdown login"><a> <div class="icons"><i class="far fa-user login" title="{{ Auth::user()->name }}"></i>
+                                    <i class="fas fa-angle-down dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i></div></a>
+                                    <!-- start sub menu -->
+                                    @if (Auth::user()->access_level == 1)
+                                    <ul class="dropdown-menu menu-login" role="menu">
+                                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Ver mis proyecto</a></li>
+                                        <li class="dropdown"><a href={{ route('logout') }}class="dropdown-toggle" data-toggle="dropdown">Cerrar Sesion</a></li>
+                                        </li>
+                                    </ul>
+                                    @else
+                                    <ul class="dropdown-menu menu-login" role="menu">
+                                        <li class="dropdown"><a href={{ route('admin') }} class="dropdown-toggle" data-toggle="dropdown">Panel de Administracion </a></li>
+                                        <li class="dropdown"><a href={{ route('logout') }} class="dropdown-toggle" data-toggle="dropdown">Cerrar Sesion</a></li>
+                                        </li>
+                                    </ul>
+                                    @endif
+                                </li>
                                 @else
                                     <a class="dropdown megamenu-fw login" href={{ route('login') }}>login</a>
                                 @endif                                

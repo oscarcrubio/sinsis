@@ -1,40 +1,40 @@
 .bg-deep-pink-opacity {
     background-color: rgba(250, 188, 75, 0.85);
 }
-.btn-medium{
-   border: 2px solid #000000;
+.btn-medium {
+    border: 2px solid #000000;
 }
-.back{
+.back {
     background-color: #f2f2f2;
 }
-.login{
+/* .login{
     background-color: rgba(250, 188, 75);
-}
-.btn.btn-dark-gray{
+} */
+.btn.btn-dark-gray {
     border-color: rgba(250, 188, 75);
     color: rgba(250, 188, 75);
 }
-.img1{
+.img1 {
     margin-left: 700px;
     margin-top: -450px;
 }
-.enterview{
-    background-color:#f2f2f2;
+.enterview {
+    background-color: #f2f2f2;
 }
-.titles{
+.titles {
     color: black;
 }
-.ver:hover{
+.ver:hover {
     color: rgb(250, 167, 12);
 }
-.hide{
+.hide {
     display: none;
 }
-.border{
-    border: 2px solid black!important;
+.border {
+    border: 2px solid black !important;
     margin-bottom: 5px;
 }
-#contendor_carga{
+#contendor_carga {
     background-color: rgba(250, 240, 245, 0.9);
     height: 100%;
     width: 100%;
@@ -44,7 +44,7 @@
     transition: all 1s ease;
     z-index: 10000;
 }
-#carga{
+#carga {
     border: 15px solid #ccc;
     border-top-color: rgba(250, 188, 75);
     border-top-style: groove;
@@ -62,7 +62,11 @@
     -o-transition: girar 1.5s linear infinite;
     transition: girar 1.5s linear infinite;
 }
-@keyframes girar{
-    from { transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

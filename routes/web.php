@@ -46,6 +46,7 @@ Route::group(
                 Route::post('/users', array('as' => 'set-user-project', 'uses' => 'ProjectController@setUser'));
                 Route::get('/{project_name}/proposals', array('as' => 'proposals', 'uses' => 'AdminController@indexProposals'));
                 Route::get('/{project_name}/diagnostics', array('as' => 'diagnostics', 'uses' => 'AdminController@indexDiagnostics'));
+                Route::post('/change-status', array('as' => 'change-status', 'uses' => 'AdminController@changeProjectStatus'));
             }
         );
 

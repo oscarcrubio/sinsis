@@ -65,7 +65,7 @@ class AdminController extends Controller
                 $project->enterprise_id = $request->project_enterprise;
                 $project->save();
                 $user = User::where('id', Auth::user()->id)->first();
-                $user->projects()->attach(['id_user' => Auth::user()->id]);
+                $user->projects()->attach(['user_id' => Auth::user()->id],['project_id' => $project->id]);
                 return redirect()->route('set-project-view', $project->slug);
             case false:
                 $projects = Project::getProjects();
@@ -139,8 +139,8 @@ class AdminController extends Controller
                 $user = new User;
                 $user->name = $request->name;
                 $user->email = $request->email;
-                $user->access_level = $request->accslvl;
-                if ($request->accslvl == 1){
+                isset($request->accslvl) ? $user->access_level = $request->accslvl : $user->access_level = 1 ;
+                if (isset($request->accslvl) && $request->accslvl == 1){
                     $user->password = bcrypt($pass);
                 }
                 else{
@@ -245,6 +245,12 @@ class AdminController extends Controller
                 return view('admin.enterprises.create', compact('projects', 'side_enterprises'));
                 break;
         }
+    }
+
+    public function changeProjectStatus(Request $request)
+    {
+        $project = Project::where('id',$request->project)->first();
+        $project->update(['status' => 0]);
     }
     
 }
