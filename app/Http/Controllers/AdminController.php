@@ -169,7 +169,7 @@ class AdminController extends Controller
         }
     }
 
-    public function indexDiagnostics()
+    public function indexDiagnostics(Request $request)
     {
         $project = Project::where('slug',$request->project_name)->first();
         $side_enterprises = Enterprise::getEnterprises();

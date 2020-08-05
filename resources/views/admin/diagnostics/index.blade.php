@@ -4,7 +4,7 @@
   <!-- start overline icon section -->  
   <section class="wow fadeIn main-admin-container">
     <header class="main-admin-header position-fixed">
-        <a href={{  route('create-diagnostics',$project->id) }} class="">+ Creat una nueva Propuesta</a> Propuestas encontradas: {{ count($diagnostics) }}
+        <a href={{  route('create-diagnostics',$project->id) }} class="">+ Crear un nueva Diagnostico</a> Diagnosticos encontrados: {{ count($diagnostics) }}
      </header>    
         <div class="container projects-container">
                 @if (count($diagnostics) > 0)                
