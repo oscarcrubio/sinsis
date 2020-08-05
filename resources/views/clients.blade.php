@@ -30,7 +30,7 @@
                                 <ul class="list-style-11">
                                     <li>Entrevistas: {{count($project->enterviews)}}</li>
                                     <li>Propuestas: {{count($project->proposals)}}</li>
-                                    <li>Diagnostico: </li>
+                                    <li>Diagnostico: {{count($project->diagnostics)}} </li>
                                     <li>Estado: {{$project->status==1 ? 'Activo' : "Cerrado"}} </li>
                                 </ul>
                                 <!-- start pricing action -->

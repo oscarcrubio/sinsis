@@ -9,7 +9,3 @@
 <div class="alert alert-success position-fixed  d-none m-0" role="alert" style="width: 60%;z-index:10" id="added-user-project">
     Se ha asignado al usuario correctamente.
 </div>
-
-<div class="alert alert-success position-fixed  d-none m-0" role="alert" style="width: 60%;z-index:10" id="close-project-alert">
-    El proyecto se ha cerrado correctamente.
-</div>

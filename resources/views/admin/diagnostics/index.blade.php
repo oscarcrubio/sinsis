@@ -1,43 +1,42 @@
 @extends('admin.layout')
 @section('title', Auth::user()->name.' | Panel de Administación SinSis')
 @section('body')
-  <!-- start overline icon section -->  
-  <section class="wow fadeIn main-admin-container">
-    <header class="main-admin-header position-fixed">
-        <a href={{  route('create-diagnostics',$project->id) }} class="">+ Creat una nueva Propuesta</a> Propuestas encontradas: {{ count($diagnostics) }}
-     </header>    
-        <div class="container projects-container">
-                @if (@$diagnostics != null)                
-            <table class="table table-striped">
-                <thead class="thead">
-                    <th scope="col">
-                        Descripcion
-                    </th>
-                    <th scope="col">
-                        Archivos
-                    </th>
-                    <th scope="col">
-                        Acciones
-                    </th>
-                    <th scope="col">
-                        Fecha de creacion
-                    </th>
-                </thead>
-                @foreach ($diagnostics as $diagnostic)      
-                <!-- start features box item -->
-                <tr>
-                    <td>{{ $diagnostic->description }}</td>
-                    <td>{{ $diagnostic->pdf_file }}</td>
-                    <td><a title="Descargar" href="" class="btn text-center btn-primary rounded"><i class="fas fa-download"></i></a>&nbsp;<a title="Eliminar" href="" class="btn text-center btn-danger rounded"><i class="fas fa-trash-alt"></i></a></td>
-                    <td class="text-center">{{ date_format($diagnostic->created_at,'d-m-Y') }}</td>
-                </tr>
-                <!-- end features box item -->
-                @endforeach
-            </table>
-            @else
-            <h2>Hoy no fio mañana sí</h2>
-            @endif
-        </div>
-    </section>
-<!-- end overline icon section -->
-@endsection
+  <!-- start overline icon section -->
+  <div id="contenedor_carga">
+      <div id="carga"></div>
+  </div>
+  <section class="wow big-section fadeIn">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-7 text-center margin-100px-bottom sm-margin-40px-bottom">
+                        <header class="main-admin-header position-fixed">
+                            <a href={{ route('create-diagnostics') }} class="">+ Crear Diagnostico</a> 
+                        </header>
+                        <div class="position-relative overflow-hidden w-100">
+                            <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">Diagnosticos</span>
+                        </div>
+                    </div>
+                </div>
+                    @if (@$diagnostics != null)
+                <div class="row">
+                    @foreach ($diagnostics as $diagnostics)      
+                    <!-- start features box item -->
+                    <div class="col-12 col-lg-3 col-md-6 md-margin-four-bottom sm-margin-30px-bottom wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
+                        <a href="youjizz.com">
+                        <div class="bg-white border-color-extra-medium-gray border-all overline-icon-box overline-medium-gray text-center padding-eighteen-tb position-relative">
+                        <div class="d-inline-block margin-20px-bottom"><i class="ti-bar-chart icon-large text-deep-pink"></i></div>
+                            <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">{{$diagnostics++}}</div>
+                            <p class="width-75 mx-auto">Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
+                        </div>
+                        </a>
+                    </div>
+                    
+                    <!-- end features box item -->
+                    @endforeach
+                </div>
+                @else
+                <h2>Hoy no fio mañana sí</h2>
+               @endif
+            </div>
+        </section>
+        <!-- end overline icon section -->

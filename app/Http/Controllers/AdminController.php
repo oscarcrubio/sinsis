@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use App\Mail\UserPassword;
 use App\Project;
 use App\Enterprise;
-use App\Diagnostic;
 use App\User;
 use App\Enterview;
 use App\Question;
@@ -65,7 +64,7 @@ class AdminController extends Controller
                 $project->enterprise_id = $request->project_enterprise;
                 $project->save();
                 $user = User::where('id', Auth::user()->id)->first();
-                $user->projects()->attach(['user_id' => Auth::user()->id],['project_id' => $project->id]);
+                $user->projects()->attach(['id_user' => Auth::user()->id]);
                 return redirect()->route('set-project-view', $project->slug);
             case false:
                 $projects = Project::getProjects();
@@ -105,7 +104,7 @@ class AdminController extends Controller
             case true:
                 $enterview = new Enterview;
                 $enterview->consultor_id = Auth::user()->id;
-                $enterview->project_id = $request->project;
+                $enterview->id_project = $request->project;
                 $enterview->save();
                 $questions = array_diff($request->all(), [$request->_token, "Enviar", $request->project]);
                 foreach ($questions as $key => $question) {
@@ -123,7 +122,7 @@ class AdminController extends Controller
         }
     }
 
-    public function indexUser(Request $request)
+    public function indexUser()
     {
         $projects = Project::getProjects();
         $side_enterprises = Enterprise::getEnterprises();
@@ -139,14 +138,8 @@ class AdminController extends Controller
                 $user = new User;
                 $user->name = $request->name;
                 $user->email = $request->email;
-                isset($request->accslvl) ? $user->access_level = $request->accslvl : $user->access_level = 1 ;
-                if (isset($request->accslvl) && $request->accslvl == 1){
-                    $user->password = bcrypt($pass);
-                }
-                else{
-                    $user->password = bcrypt('Lomecan123');
-                    
-                }
+                $user->password = bcrypt($pass);
+                $user->access_level = 1;
                 $user->charge = $request->charge;
                 $user->save();
                 $data = [
@@ -163,64 +156,32 @@ class AdminController extends Controller
                 break;
                 // dd($user->password);
             case false:
-                $projects = Project::getProjects();
-                $side_enterprises = Enterprise::getEnterprises();
-                return view('admin/users/create', compact('projects', 'side_enterprises'));
+                return view('admin/users/create');
                 break;
         }
     }
 
-    public function indexDiagnostics(Request $request)
+    public function indexDiagnostics()
     {
-        $project = Project::where('slug',$request->project_name)->first();
-        $side_enterprises = Enterprise::getEnterprises();
-        $projects = Project::getProjects();
-        $diagnostics = $project->diagnostics;
-        return view('admin/diagnostics/index', compact('diagnostics','project','projects','side_enterprises'));
+        $diagnostics = ['diagnostico 1', 'diagnostico 2', 'diagnostico 3'];
+        return view('admin/diagnostics/index', compact('diagnostics'));
     }
 
-    public function createDiagnostics(Request $request)
+    public function createDiagnostics()
     {
         $mytime = date('d-m-Y');
-        $project= $request->project_id; 
-        $side_enterprises = Enterprise::getEnterprises();
-        $projects = Project::getProjects();
-        return view('admin/diagnostics/create', compact('mytime','side_enterprises','projects','project'));
-        
+        return view('admin/diagnostics/create', compact('mytime'));
     }
-    public function storeDiagnostics(Request $request)
+
+    public function indexProposals()
     {
-        $extension = $request->file('file')->extension();
-        
-        if($extension == "pdf" || $extension=="PDF"){
-
-            $diagnostico = new Diagnostic;
-            $diagnostico->project_id = $request->project_id;
-            $diagnostico->pdf_file =  $request->file('file')->store('public');
-            $diagnostico->description= $request->texto;
-            $diagnostico->save();
-
-            return redirect()->back();
-        }
-        return redirect()->back();
-        
-    }
-
-    public function indexProposals(Request $request)
-    {           
-        $project = Project::where('slug',$request->project_name)->first();
-        $side_enterprises = Enterprise::getEnterprises();
-        $projects = Project::getProjects();
-        $proposals = $project->proposals;
-        return view('admin/proposal/index', compact('proposals','project','projects','side_enterprises'));
+        $proposals = ['propuesta 1', 'propuesta 2', 'propuesta 3'];
+        return view('admin/proposal/index', compact('proposals'));
     }
 
     public function indexEnterprise()
     {
-        $projects = Project::getProjects();
-        $side_enterprises = Enterprise::getEnterprises();
-        $enterprises = ['empresa 1', 'empresa 2', 'empresa 3'];
-        return view('admin/enterprises/index', compact('enterprises', 'projects', 'side_enterprises'));
+        return view('enterprises.index');
     }
 
     public function createEnterprise(Request $request)
@@ -240,17 +201,8 @@ class AdminController extends Controller
                 return response()->json(array('success' => true, 'data' => $data), 200);
                 break;
             case false:
-                $projects = Project::getProjects();
-                $side_enterprises = Enterprise::getEnterprises();
-                return view('admin.enterprises.create', compact('projects', 'side_enterprises'));
+                return view('admin.enterprises.create');
                 break;
         }
     }
-
-    public function changeProjectStatus(Request $request)
-    {
-        $project = Project::where('id',$request->project)->first();
-        $project->update(['status' => 0]);
-    }
-    
 }
