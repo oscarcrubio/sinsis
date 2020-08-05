@@ -31,42 +31,20 @@
     display: none;
 }
 .border {
-    border: 2px solid black !important;
+    border: 2px solid rgb(250, 167, 12) !important;
     margin-bottom: 5px;
 }
-#contendor_carga {
-    background-color: rgba(250, 240, 245, 0.9);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    -webkit-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-    z-index: 10000;
+.backg {
+    background-color: rgba(250, 188, 75, 0.85);
 }
-#carga {
-    border: 15px solid #ccc;
-    border-top-color: rgba(250, 188, 75);
-    border-top-style: groove;
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    -webkit-transition: girar 1.5s linear infinite;
-    -o-transition: girar 1.5s linear infinite;
-    transition: girar 1.5s linear infinite;
+.si {
+    margin-top: -37px;
+    font-weight: bold;
 }
-@keyframes girar {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+#si {
+    cursor: pointer;
+    font-family: arial;
+    margin-top: 20px;
+    margin-left: -400px;
 }

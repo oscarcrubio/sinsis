@@ -15,8 +15,8 @@
                 @if($question-> id == 6)
                 <div id="{{$conta++}}">
                     <label value="{{ $question->id}} ">{{ $question->question}}</label>
-                    <div>
-                        <input type="checkbox" name="{{ $question->id }}" id="si">Si
+                    <div class="box">
+                        <input type="checkbox" name="{{ $question->id }}" id="si"><p class="si">Si</p>
                     </div>
                 </div>
                 @else
