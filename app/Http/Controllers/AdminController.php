@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use App\Mail\UserPassword;
 use App\Project;
 use App\Enterprise;
-use App\Diagnostic;
 use App\User;
 use App\Enterview;
 use App\Question;
@@ -66,7 +65,7 @@ class AdminController extends Controller
                 $project->enterprise_id = $request->project_enterprise;
                 $project->save();
                 $user = User::where('id', Auth::user()->id)->first();
-                $user->projects()->attach(['user_id' => Auth::user()->id],['project_id' => $project->id]);
+                $user->projects()->attach(['id_user' => Auth::user()->id]);
                 return redirect()->route('set-project-view', $project->slug);
             case false:
                 $projects = Project::getProjects();
@@ -108,7 +107,7 @@ class AdminController extends Controller
             case true:
                 $enterview = new Enterview;
                 $enterview->consultor_id = Auth::user()->id;
-                $enterview->project_id = $request->project;
+                $enterview->id_project = $request->project;
                 $enterview->save();
                 $questions = array_diff($request->all(), [$request->_token, "Enviar", $request->project]);
                 foreach ($questions as $key => $question) {
@@ -127,7 +126,7 @@ class AdminController extends Controller
         }
     }
 
-    public function indexUser(Request $request)
+    public function indexUser()
     {
         $projects = Project::getProjects();
         $users = User::getUsers();
@@ -144,14 +143,8 @@ class AdminController extends Controller
                 $user = new User;
                 $user->name = $request->name;
                 $user->email = $request->email;
-                isset($request->accslvl) ? $user->access_level = $request->accslvl : $user->access_level = 1 ;
-                if (isset($request->accslvl) && $request->accslvl == 1){
-                    $user->password = bcrypt($pass);
-                }
-                else{
-                    $user->password = bcrypt('Lomecan123');
-                    
-                }
+                $user->password = bcrypt($pass);
+                $user->access_level = 1;
                 $user->charge = $request->charge;
                 $user->save();
                 $data = [
@@ -176,7 +169,7 @@ class AdminController extends Controller
         }
     }
 
-    public function indexDiagnostics(Request $request)
+    public function indexDiagnostics()
     {
         $project = Project::where('slug',$request->project_name)->first();
         $side_enterprises = Enterprise::getEnterprises();
@@ -186,7 +179,7 @@ class AdminController extends Controller
         return view('admin/diagnostics/index', compact('diagnostics','project','projects','side_enterprises','users'));
     }
 
-    public function createDiagnostics(Request $request)
+    public function createDiagnostics()
     {
         $mytime = date('d-m-Y');
         $project= $request->project_id; 
@@ -257,11 +250,4 @@ class AdminController extends Controller
                 break;
         }
     }
-
-    public function changeProjectStatus(Request $request)
-    {
-        $project = Project::where('id',$request->project)->first();
-        $project->update(['status' => 0]);
-    }
-    
 }

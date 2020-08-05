@@ -150,30 +150,3 @@ Dropzone.options.dropzoneForm = {
         });
     },
 };
-
-$("#close-project").on("click", () => {
-    let token = $(`input[name="_token"]`).val();
-    let project = $("#change-status").data(`project`);
-    console.log(project);
-    $.ajax({
-        method: `POST`,
-        url: `/admin/project/change-status`,
-        data: {
-            _token: token,
-            project: project,
-        },
-        beforeSend: () => {},
-    }).done(() => {
-        $("#change-status").removeClass(`project-active`);
-        $("#change-status").addClass(`project-innactive`);
-        $("#change-status").text(`proyecto cerrado`);
-        $(".create-button").hide();
-        $("#users-form").hide();
-        $("#change-status").attr(`id`, ``);
-        $(`#exampleModalCenter`).modal("hide");
-        $(`#close-project-alert`).removeClass("d-none");
-        setTimeout(() => {
-            $(`#close-project-alert`).addClass("d-none");
-        }, 2500);
-    });
-});

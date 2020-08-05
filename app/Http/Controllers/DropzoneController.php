@@ -30,7 +30,7 @@ class DropzoneController extends Controller
 
     function upload(Request $request)
     {
-        $proposal = Proposal::latest('id')->first();
+        $proposal = Proposal::latest('id')->first();   
         $image = $request->file('file');
         $imageName =  rand() . '.' . $image->extension();
         $image->move(base_path('\public\uploads'), $imageName);
