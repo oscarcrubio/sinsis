@@ -19,4 +19,9 @@ class Enterprise extends Model
     {
         return $this->hasMany('App\Project');
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\User','client_id');
+    }
 }

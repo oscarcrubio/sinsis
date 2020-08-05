@@ -153,7 +153,7 @@
                         $diagnostic = $project->diagnostics[0];
                     @endphp
                     <div class="col-12 col-lg-4 blog-image no-padding md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right text-center">                        
-                        <a href={{ 'storage/app/Diagnosticos/'.$diagnostic->pdf_file }} download><img src={{ asset('images/icons/pdf_icon.webp') }} alt="" style="width: 100px;" title="Descargar"></a>
+                        <a href={{  'storage/'.$diagnostic->pdf_file}} download><img src={{ asset('images/icons/pdf_icon.webp') }} alt="" style="width: 100px;" title="Descargar"></a>
                     </div>
                     <div class="col-12 col-lg-6 blog-text p-0">
                         <div class="content margin-20px-bottom md-no-padding-left ">

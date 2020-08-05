@@ -46,8 +46,13 @@
                     <a href={{ route('user') }} title="Proyectos" data-toggle="dropdown">Usuarios<i class="fas fa-angle-right pull-right"></i></a>
                 <ul class="dropdown-menu second-level">
                     <li class="dropdown">
-                          <a href={{ route('create-user') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>                         
-                    </li>                      
+                          <a href={{ route('create-user') }} title="Projectos" data-toggle="dropdown">Nuevo</i></a>
+                    </li>
+                    @foreach ($users as $user)
+                    <li class="dropdown">
+                        <a href="#" title={{ $user->name }} data-toggle="dropdown">{{ $user->name }}</a>
+                    </li>    
+                  @endforeach    
                 </ul>
             </li>
               <li class="dropdown">

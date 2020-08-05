@@ -32,9 +32,15 @@
                                 <ul class="list-style-11">
                                     <li>Dirección: {{ $side_enterprise->location }}</li>
                                 </ul>
+                                <ul class="list-style-11">
+                                    @php
+                                        $client = App\User::where('id',$side_enterprise->client_id)->first();
+                                    @endphp
+                                    <li>Representante: {{ $client->name }}</li>
+                                </ul>
                                 <!-- start pricing action -->
                                 <div class="pricing-action margin-35px-top md-no-margin-top">
-                                    <a href={{ route('create-enterprise') }} class="btn btn-dark-gray btn-small text-extra-small">Ver datos</a>                                        
+                                    <a href={{ route('create-enterprise') }} class="btn btn-dark-gray btn-small text-extra-small">Ver proyectos</a>                                        
                                 </div>
                                 <!-- end pricing action -->
                             </div>

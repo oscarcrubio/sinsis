@@ -34,7 +34,7 @@
                             <div class="padding-45px-all pricing-features md-padding-20px-all sm-padding-30px-all">
                                 <ul class="list-style-11">
                                     <li>Entrevistas: {{ count($project->enterviews) }}</li>
-                                    <strong><li>{{ $project->description }}</li></strong>
+                                    <strong><li>{{ str_limit($project->description,50) }}</li></strong>
                                     <!-- <li>Unlimited Styles</li>
                                     <li>Customer Service</li>
                                     <li>Manual Backup</li> -->

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -43,5 +44,22 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Project', 'consultants_project')
             ->withPivot('project_id');
+    }
+
+    public function enterprises()
+    {
+        return $this->hasMany('App\Enterprise');
+    }
+
+    static public function getUsers()
+    {        
+        switch(Auth::user()->access_level){
+            case 2:
+                $users = User::where('access_level',1)->get();
+                return $users;
+            case 3:
+                $users = User::where('access_level','!=',3)->get();
+                return $users;
+        }
     }
 }

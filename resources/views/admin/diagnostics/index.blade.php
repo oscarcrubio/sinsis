@@ -7,7 +7,7 @@
         <a href={{  route('create-diagnostics',$project->id) }} class="">+ Creat una nueva Propuesta</a> Propuestas encontradas: {{ count($diagnostics) }}
      </header>    
         <div class="container projects-container">
-                @if (@$diagnostics != null)                
+                @if (count($diagnostics) > 0)                
             <table class="table table-striped">
                 <thead class="thead">
                     <th scope="col">
@@ -35,7 +35,11 @@
                 @endforeach
             </table>
             @else
-            <h2>Hoy no fio mañana sí</h2>
+            <div class="text-center">
+                <h2><i class="far fa-frown"></i></h2>
+                <h2>No se han encontrado diagnosticos.</h2>
+                <span>Puedes crear uno nuevo haciendo click en el boton de arriba.</span>
+            </div>
             @endif
         </div>
     </section>
