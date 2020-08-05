@@ -1,50 +1,50 @@
 .bg-deep-pink-opacity {
     background-color: rgba(250, 188, 75, 0.85);
 }
-.btn-medium{
-   border: 2px solid #000000;
+.btn-medium {
+    border: 2px solid #000000;
 }
-.back{
+.back {
     background-color: #f2f2f2;
 }
-.login{
+/* .login{
     background-color: rgba(250, 188, 75);
-}
-.btn.btn-dark-gray{
+} */
+.btn.btn-dark-gray {
     border-color: rgba(250, 188, 75);
     color: rgba(250, 188, 75);
 }
-.img1{
+.img1 {
     margin-left: 700px;
     margin-top: -450px;
 }
-.enterview{
-    background-color:#f2f2f2;
-}
-.titles{
-    color: black;
-}
-.ver:hover{
-    color: rgb(250, 167, 12);
-}
-.hide{
-    display: none;
-}
-.border{
-    border: 2px solid rgb(250, 167, 12)!important;
-    margin-bottom: 5px;
-}
-.backg{
-    background-color: rgba(250, 188, 75);
-}
-.backg2{
+.enterview {
     background-color: #f2f2f2;
 }
-.si{
+.titles {
+    color: black;
+}
+.ver:hover {
+    color: rgb(250, 167, 12);
+}
+.hide {
+    display: none;
+}
+.border {
+    border: 2px solid rgb(250, 167, 12) !important;
+    margin-bottom: 5px;
+}
+.backg {
+    background-color: rgba(250, 188, 75);
+}
+.backg2 {
+    background-color: #f2f2f2;
+}
+.si {
     margin-top: -37px;
     font-weight: bold;
 }
-#si{
+#si {
     cursor: pointer;
     font-family: arial;
     margin-top: 20px;
